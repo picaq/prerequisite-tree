@@ -11,7 +11,7 @@ This project is set up to deploy to [Heroku][], using the [Container stack][].
    brew tap heroku/brew && brew install heroku
    ```
 
-1. Set up an app:
+1. Set up an app in the main project dir:
 
    ```sh
    npm run heroku:setup
