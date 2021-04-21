@@ -2,6 +2,16 @@
 
 This project is set up to deploy to [Heroku][], using the [Container stack][].
 
+## Prerequisites
+
+Read the [README](../README.md)
+
+The [prerequisites to deploy to Heorku][prerequisites] is the same as the local
+development environment.
+
+You'll also need to [setup up the `.env` file][dotenv] in your project
+directory.
+
 ## Setup
 
 1. [Sign up for a Heroku account][sign up] if you don't already have one.
