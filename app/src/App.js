@@ -13,7 +13,7 @@ const App = () => {
 
   return (
     <main className="App">
-    <h1>something</h1>
+    <h1>Prerequisite Tree</h1>
 
 
       <TaskList tasks={tasks} />
