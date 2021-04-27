@@ -1,0 +1,13 @@
+html {
+    background: #171717;
+    color: #ddd;
+}
+
+h1, h2, h3, h4, h5 {
+    color: #ccc;
+}
+
+input, button {
+    color: #ddd;
+    background-color: #222;
+}
