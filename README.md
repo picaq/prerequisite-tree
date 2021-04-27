@@ -1,4 +1,7 @@
-# Example Project With PostgreSQL, Express, and React
+# Prerequisite Tree
+
+Prerequisite tree is an app to plan and visualize complex goals and tasks. 
+Tasks that have multiple sub tasks or prerequisites can seem overwhelming and make people put off big projects. It is a tool to organize and visualize the needed steps can help chart what needs to be done and what can be done next.
 
 End-to-end React app backed by an Express API server, persisting data to
 PostgreSQL database. The project has a very simple interface that fetches data
