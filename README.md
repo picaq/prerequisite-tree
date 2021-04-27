@@ -12,7 +12,7 @@ from a single table in the database, and allows you to add rows to that table.
 [![Deploy to Heroku][deploy-badge]][deploy-workflow]
 [![Reset Heroku DB][reset-badge]][reset-workflow]
 
-## Prerequisites
+## Set-up Prerequisites
 
 ### Docker
 
