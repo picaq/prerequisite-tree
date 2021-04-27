@@ -2,6 +2,8 @@ import * as React from "react";
 
 import * as apiClient from "./apiClient";
 
+import "./App.css";
+
 const App = () => {
   const [tasks, setTasks] = React.useState([]);
 
