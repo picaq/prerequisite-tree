@@ -38,6 +38,12 @@ You'll need to install Node v14 or above. [`nvm`][nvm] is highly recommended.
 npm install
 ```
 
+### Install d3.js
+
+```sh
+npm install d3 --save
+```
+
 ### Set Up `postgres` User Password and Database Name
 
 We need to set up couple pieces of information in order to start a new
