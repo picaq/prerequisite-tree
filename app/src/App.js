@@ -14,6 +14,11 @@ const App = () => {
     loadTasks();
   }, []);
 
+  const rainbow = ["red", "orange", "green", "cornflowerblue", "violet"];
+  d3.selectAll('li')
+    .append("appppppp")
+    .style( "color", (d, i) => rainbow[i%4] );
+
   return (
     <main className="App">
     <h1>Prerequisite Tree</h1>
@@ -21,6 +26,14 @@ const App = () => {
 
       <TaskList tasks={tasks} />
       <AddTask loadTasks={loadTasks} />
+
+      <ul>
+        <li>qwr</li>
+        <li>things</li>
+        <li>dot</li>
+        <li>•</li>
+        <li>°</li>
+      </ul>
     </main>
   );
 };
