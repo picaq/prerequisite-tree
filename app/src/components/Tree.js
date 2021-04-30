@@ -35,7 +35,9 @@ function Tree({ data }) {
   
     return (
 
-      <svg style="width: 100%; height: 100%">
+      <svg
+        ref={ref}
+       style="width: 100%; height: 100%">
       <defs>
     <marker id="triangle" viewBox="0 0 10 10"
           refX="1" refY="5"
