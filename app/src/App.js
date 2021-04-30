@@ -8,6 +8,7 @@ import * as apiClient from "./apiClient";
 import "./App.css";
 
 import BarChart from "./components/BarChart";
+import Tree from "./components/Tree";
 
 const App = () => {
   const [tasks, setTasks] = React.useState([]);
@@ -55,20 +56,19 @@ const App = () => {
     { year: 2017, efficiency: 39.4, sales: 6081000 },
   ];
   return (
-    <main className="App">
+    <>
+    <header>
       <h1>Prerequisite Tree</h1>
+    </header>
 
-      <TaskList tasks={tasks} />
-      <AddTask loadTasks={loadTasks} />
+    <main className="App">
+      <div>
+        <TaskList tasks={tasks} />
+        <AddTask loadTasks={loadTasks} />
+      </div>
       <BarChart data={data} />
-      <ul>
-        <li>qwr</li>
-        <li>things</li>
-        <li>dot</li>
-        <li>•</li>
-        <li>°</li>
-      </ul>
     </main>
+    </>
   );
 };
 

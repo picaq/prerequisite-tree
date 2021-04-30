@@ -11,3 +11,16 @@ input, button {
     color: #ddd;
     background-color: #222;
 }
+
+svg {
+    float: right;
+    display: block;
+}
+
+main {
+    display: flex;
+    flex-wrap: wrap;
+    padding-right: 0;
+    margin-right: 0;
+}
+

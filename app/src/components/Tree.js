@@ -2,7 +2,7 @@ import { useD3 } from '../hooks/useD3';
 import React from 'react';
 import * as d3 from 'd3';
 
-function BarChart({ data }) {
+function Tree({ data }) {
     const ref = useD3(
       (svg) => {
         const height = 500;
@@ -86,4 +86,4 @@ function BarChart({ data }) {
     );
   }
   
-  export default BarChart;
+  export default Tree;
