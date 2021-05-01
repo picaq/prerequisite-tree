@@ -12,7 +12,7 @@ input, button {
     background-color: #222;
 }
 
-svg {
+/* svg {
     float: right;
     display: block;
 }
@@ -22,5 +22,29 @@ main {
     flex-wrap: wrap;
     padding-right: 0;
     margin-right: 0;
-}
+} */
 
+
+body {
+    background: black;
+  }
+  circle {
+    fill: cadetblue;
+  }
+  line {
+    stroke: #777;
+    marker-end: url("#triangle");
+  }
+  text {
+    text-anchor: middle;
+    font-family: "Helvetica Neue", Helvetica, sans-serif;
+    fill: #ccc;
+    font-size: .8rem;
+  }
+  
+  
+  svg { 
+    position:fixed; 
+    top:0; left:0; height:100%; width:100%;
+    z-index: -1;
+}
