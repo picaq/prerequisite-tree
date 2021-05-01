@@ -11,18 +11,15 @@ import BarChart from "./components/BarChart";
 import Tree from "./components/Tree";
 
 const App = () => {
-  const [tasks, setTasks] = React.useState([]);
+  // const [tasks, setTasks] = React.useState([]);
 
-  const loadTasks = async () => setTasks(await apiClient.getTasks());
+  // const loadTasks = async () => setTasks(await apiClient.getTasks());
 
-  React.useEffect(() => {
-    loadTasks();
-  }, []);
+  // React.useEffect(() => {
+  //   loadTasks();
+  // }, []);
 
-  const rainbow = ["red", "orange", "green", "cornflowerblue", "violet"];
-  d3.selectAll("li")
-    .append("appppppp")
-    .style("color", (d, i) => rainbow[i % 4]);
+ 
 
   const nodes = [
  {key: 0, name: 'Birthday Party'},
