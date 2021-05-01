@@ -94,47 +94,66 @@ const addTasks = () => {
 
     <main className="App">
       <div>
-        <TaskList tasks={tasks} />
-        <AddTask loadTasks={loadTasks} />
+
+
+      <input
+      onChange={(e) => setInputTask(e.target.value)}
+      value={inputTask}
+      placeholder="add something"
+      />
+
+      <button
+        onClick={addTasks}
+      >
+      add task
+      </button>
+
+
+ 
+
+
       </div>
-      <BarChart data={data} />
+
+
+      {/* variable={data} */}
+      <Tree nodes={tasksx} links={links} />
     </main>
     </>
   );
 };
 
-const TaskList = ({ tasks }) => (
-  <ul>
-    {tasks.map(({ id, name }) => (
-      <li key={id}>{name}</li>
-    ))}
-  </ul>
-);
+// const TaskList = ({ tasks }) => (
+//   <ul>
+//     {tasks.map(({ id, name }) => (
+//       <li key={id}>{name}</li>
+//     ))}
+//   </ul>
+// );
 
-const AddTask = ({ loadTasks }) => {
-  const [task, setTask] = React.useState("");
+// const AddTask = ({ loadTasks }) => {
+//   const [task, setTask] = React.useState("");
 
-  const canAdd = task !== "";
+//   const canAdd = task !== "";
 
-  const onSubmit = async (e) => {
-    e.preventDefault();
-    if (canAdd) {
-      await apiClient.addTask(task);
-      loadTasks();
-      setTask("");
-    }
-  };
+//   const onSubmit = async (e) => {
+//     e.preventDefault();
+//     if (canAdd) {
+//       await apiClient.addTask(task);
+//       loadTasks();
+//       setTask("");
+//     }
+//   };
 
-  return (
-    <form onSubmit={onSubmit}>
-      <label>
-        New task:{" "}
-        <input onChange={(e) => setTask(e.currentTarget.value)} value={task} />
-      </label>
-      <button disabled={!canAdd}>Add</button>
-    </form>
-  );
-};
+//   return (
+//     <form onSubmit={onSubmit}>
+//       <label>
+//         New task:{" "}
+//         <input onChange={(e) => setTask(e.currentTarget.value)} value={task} />
+//       </label>
+//       <button disabled={!canAdd}>Add</button>
+//     </form>
+//   );
+// };
 
 
 export default App;
