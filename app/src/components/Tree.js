@@ -78,7 +78,7 @@ function Tree({ links, nodes }) { // pink curlies = don’t worry about order of
        style={{width: "100%", height: "100%"}}>
       <defs>
     <marker id="triangle" viewBox="0 0 10 10"
-          refX="1" refY="5"
+          refX="16.5" refY="5"
           markerUnits="strokeWidth"
           markerWidth="10" markerHeight="10"
           orient="auto">
