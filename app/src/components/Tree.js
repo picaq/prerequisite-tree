@@ -8,11 +8,13 @@ function Tree({ links, nodes }) { // pink curlies = don’t worry about order of
       (svg) => {
         const height = 500;
         const width = 500;
+        const boxHeight = 600;
+        const boxWidth = 600;
         // const margin = { top: 20, right: 30, bottom: 30, left: 40 };
 
         d3.forceSimulation(nodes)
           .force('charge', d3.forceManyBody().strength(-400))
-          .force('center', d3.forceCenter(width/2, height/2))
+          .force('center', d3.forceCenter(boxWidth/2, boxHeight/2))
           .force('link', d3.forceLink().links(links))
           .on('tick', ticked);
         // console.log("line 18", simulation);
@@ -75,7 +77,7 @@ function Tree({ links, nodes }) { // pink curlies = don’t worry about order of
       <div className="svg-container">
       <svg 
         version="1.1" 
-        viewBox="0 0 500 500" 
+        viewBox="0 0 600 600" 
         preserveAspectRatio="xMinYMin meet"
         className="svg-content"
         ref={ref}
