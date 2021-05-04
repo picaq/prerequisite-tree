@@ -21,7 +21,7 @@ const App = () => {
 
  
 
-  const nodes = [
+const nodes = [
  {key: 0, name: 'Birthday Party'},
   
  {key: 1, name: 'activities'},
@@ -93,16 +93,16 @@ const addTasks = () => {
     </header>
 
     <main className="App">
-      <div>
+      <form>
 
 
       <input
-      onChange={(e) => setInputTask(e.target.value)}
-      value={inputTask}
-      placeholder="add something"
+        onChange={(e) => setInputTask(e.target.value)}
+        value={inputTask}
+        placeholder="add something"
       />
 
-      <button
+      <button type="button"
         onClick={addTasks}
       >
       add task
@@ -112,7 +112,7 @@ const addTasks = () => {
  
 
 
-      </div>
+      </form>
 
 
       {/* variable={data} */}
