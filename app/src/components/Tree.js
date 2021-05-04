@@ -15,6 +15,7 @@ function Tree({ links, nodes }) { // pink curlies = don’t worry about order of
         d3.forceSimulation(nodes)
           .force('charge', d3.forceManyBody().strength(-400))
           .force('center', d3.forceCenter(boxWidth/2, boxHeight/2))
+          // .force('center', d3.forceCenter(width/2, height/2))
           .force('link', d3.forceLink().links(links))
           .on('tick', ticked);
         // console.log("line 18", simulation);
