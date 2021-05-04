@@ -12,22 +12,6 @@ input, button {
     background-color: #222;
 }
 
-/* svg {
-    float: right;
-    display: block;
-}
-
-main {
-    display: flex;
-    flex-wrap: wrap;
-    padding-right: 0;
-    margin-right: 0;
-} */
-
-
-/* body {
-    background: black;
-  } */
   circle {
     fill: cadetblue;
   }
@@ -39,24 +23,28 @@ main {
     text-anchor: middle;
     font-family: "Helvetica Neue", Helvetica, sans-serif;
     fill: #ccc;
-    font-size: .7rem;
+    font-size: .8rem;
   }
   
-  
-  /* svg { 
-    position:absolute; 
-    top:0; left:0; height:100%; width:100%;
-    z-index: -1;
-} */
-
 .svg-container { 
 	display: inline-block;
 	position: relative;
-	width: 100%;
-	padding-bottom: 100%; 
+	width: 100vmin;
+	/* padding-bottom: 100%;  */
 	vertical-align: middle; 
-	overflow: hidden; 
-  background: darkslategray;
+	/* overflow: hidden;  */
+  /* background: darkslategray; */
+
+  position:absolute; 
+  /* top:0; left:0;  */
+  top:0; 
+  right:0; 
+  /* max-height: 100vh; 
+  max-width: 100vw; */
+  z-index: -1;
+  transform: 
+    translateY(calc(55vh - 55vmin))
+    translateX(calc(-33vw + 33vmin));
 }
 
 .svg-content { 
