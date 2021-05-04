@@ -25,9 +25,9 @@ main {
 } */
 
 
-body {
+/* body {
     background: black;
-  }
+  } */
   circle {
     fill: cadetblue;
   }
@@ -44,7 +44,16 @@ body {
   
   
   svg { 
-    position:fixed; 
+    position:absolute; 
     top:0; left:0; height:100%; width:100%;
     z-index: -1;
+}
+
+.svg-container { 
+	display: inline-block;
+	position: relative;
+	max-width: 100%;
+	padding-bottom: 100%; 
+	vertical-align: middle; 
+	overflow: hidden; 
 }

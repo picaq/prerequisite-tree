@@ -72,10 +72,14 @@ function Tree({ links, nodes }) { // pink curlies = don’t worry about order of
     );
   
     return (
-
-      <svg
-       ref={ref}
-       style={{width: "100%", height: "100%"}}>
+      <div className="svg-container">
+      <svg 
+        version="1.1" 
+        viewBox="0 0 500 500" 
+        preserveAspectRatio="xMinYMin meet"
+        class="svg-content"
+        ref={ref}
+        style={{width: "100%", height: "100%"}}>
       <defs>
     <marker id="triangle" viewBox="0 0 10 10"
           refX="16.5" refY="5"
@@ -89,6 +93,7 @@ function Tree({ links, nodes }) { // pink curlies = don’t worry about order of
       <g className="links"></g>
       <g className="nodes"></g>
     </svg>
+    </div>
 
     );
   }
