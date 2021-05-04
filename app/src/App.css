@@ -52,10 +52,16 @@ main {
 .svg-container { 
 	display: inline-block;
 	position: relative;
-	max-width: 100vw;
-  max-height: 100vh;
+	width: 100%;
 	padding-bottom: 100%; 
 	vertical-align: middle; 
 	overflow: hidden; 
-  background: darkred;
+  background: darkslategray;
+}
+
+.svg-content { 
+	display: inline-block;
+	position: absolute;
+	top: 0;
+	left: 0;
 }
