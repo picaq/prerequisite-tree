@@ -70,17 +70,13 @@ const App = () => {
 
   const addTasks = () => {
     console.log("inside addTasks");
-    const currentTasks = tasksx;
-    const obj = {
+    const newNode = {
       key: tasksx.length,
       id: tasksx.length,
       name: inputTask,
     };
-    // setTasks = tasks[tasks.length] = newTask;
-    currentTasks.push(obj);
-    setTasks(currentTasks);
-    console.log({ currentTasks });
-    console.log({ tasksx });
+    setTasks([...tasksx, newNode]);
+    setInputTask("");
   };
 
   return (
