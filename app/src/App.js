@@ -90,15 +90,20 @@ const App = () => {
       </header>
 
       <main className="App">
-        <div>
+        <form
+          onSubmit={(e) => {
+            e.preventDefault();
+            addTasks();
+          }}
+        >
           <input
             onChange={(e) => setInputTask(e.target.value)}
             value={inputTask}
             placeholder="add something"
           />
 
-          <button onClick={addTasks}>add task</button>
-        </div>
+          <button>add task</button>
+        </form>
 
         {/* variable={data} */}
         <Tree nodes={tasksx} links={links} />
