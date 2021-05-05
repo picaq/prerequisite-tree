@@ -1,6 +1,6 @@
 # Prerequisite Tree
 
-Prerequisite Tree is an app to plan and visualize complex goals and tasks. 
+Prerequisite Tree is an app to plan and visualize complex goals and tasks.
 Tasks that have multiple sub tasks or prerequisites can seem overwhelming and make people put off big projects. It is a tool to organize and visualize the needed steps can help chart what needs to be done and what can be done next.
 
 End-to-end React app backed by an Express API server, persisting data to
@@ -22,8 +22,8 @@ Docker first before continuing.
 Use one of these methods:
 
 - Use [Homebrew][] on macOS: `brew install --cask docker`
-   - Open Docker in Applications
-   - Skip tutorial 
+  - Open Docker in Applications
+  - Skip tutorial
 - [Follow the instructions on the Docker website][docker-www]
 
 ### Node

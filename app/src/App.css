@@ -1,53 +1,56 @@
 html {
-    background: #171717;
-    color: #ddd;
+  background: #171717;
+  color: #ddd;
 }
 
-h1, h2, h3, h4, h5 {
-    color: #ccc;
+h1,
+h2,
+h3,
+h4,
+h5 {
+  color: #ccc;
 }
 
-input, button {
-    color: #ddd;
-    background-color: #222;
+input,
+button {
+  color: #ddd;
+  background-color: #222;
 }
 
-  circle {
-    fill: cadetblue;
-  }
-  line {
-    stroke: #777;
-    marker-end: url("#triangle");
-  }
-  text {
-    text-anchor: middle;
-    font-family: "Helvetica Neue", Helvetica, sans-serif;
-    fill: #ccc;
-    font-size: .8rem;
-  }
-  
-.svg-container { 
-	display: inline-block;
-	position: relative;
-	width: 100vmin;
-	vertical-align: middle; 
-	/* overflow: hidden;  */
+circle {
+  fill: cadetblue;
+}
+line {
+  stroke: #777;
+  marker-end: url("#triangle");
+}
+text {
+  text-anchor: middle;
+  font-family: "Helvetica Neue", Helvetica, sans-serif;
+  fill: #ccc;
+  font-size: 0.8rem;
+}
 
-  position: absolute; 
+.svg-container {
+  display: inline-block;
+  position: relative;
+  width: 100vmin;
+  vertical-align: middle;
+  /* overflow: hidden;  */
+
+  position: absolute;
   /* top:0; left:0;  */
-  top: 0; 
-  right: 0; 
+  top: 0;
+  right: 0;
   /* max-height: 100vh; 
   max-width: 100vw; */
   z-index: -1;
-  transform: 
-    translateY(calc(55vh - 55vmin))
-    translateX(calc(-33vw + 33vmin));
+  transform: translateY(calc(55vh - 55vmin)) translateX(calc(-33vw + 33vmin));
 }
 
-.svg-content { 
-	display: inline-block;
-	position: absolute;
-	top: 0;
-	left: 0;
+.svg-content {
+  display: inline-block;
+  position: absolute;
+  top: 0;
+  left: 0;
 }
