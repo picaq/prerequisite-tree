@@ -1,13 +1,13 @@
-import { useD3 } from "../hooks/useD3";
 import React from "react";
+
 import * as d3 from "d3";
+
+import { useD3 } from "../hooks/useD3";
 
 // passing in
 function Tree({ links, nodes }) {
   // pink curlies = don’t worry about order of passing in
   const ref = useD3((svg) => {
-    const height = 500;
-    const width = 500;
     const boxHeight = 600;
     const boxWidth = 600;
     // const margin = { top: 20, right: 30, bottom: 30, left: 40 };

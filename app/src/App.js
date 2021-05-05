@@ -1,14 +1,8 @@
 import * as React from "react";
 
-import * as d3 from "d3";
-
-import * as apiClient from "./apiClient";
-// import { useD3 } from "./hooks/useD3";
+import Tree from "./components/Tree";
 
 import "./App.css";
-
-import BarChart from "./components/BarChart";
-import Tree from "./components/Tree";
 
 const App = () => {
   // const [tasks, setTasks] = React.useState([]);
