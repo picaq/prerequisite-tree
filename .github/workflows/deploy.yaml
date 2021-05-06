@@ -1,11 +1,37 @@
-name: Deploy to Heroku
+# name: Deploy to Heroku
+
+# on:
+#   pull_request:
+#   push:
+#     branches:
+#       - main
+#   workflow_dispatch:
+# jobs:
+#   deploy:
+#     runs-on: ubuntu-latest
+#     steps:
+#       - uses: actions/checkout@v2
+#         with:
+#           fetch-depth: 0
+#       - name: Deploy to Heroku
+#         env:
+#           HEROKU_API_TOKEN: ${{ secrets.HEROKU_API_KEY }}
+#           HEROKU_APP_NAME: ${{ secrets.HEROKU_APP_NAME }}
+#         run: >-
+#           if [ ${GITHUB_EVENT_NAME} == "pull_request" ]; then
+#             GITHUB_SHA=${{ github.event.pull_request.head.sha }}
+#           fi
+#           git push -f https://heroku:${HEROKU_API_TOKEN}@git.heroku.com/${HEROKU_APP_NAME}.git
+#           origin/main:main
+#           ${GITHUB_SHA}:main
 
 on:
-  pull_request:
   push:
     branches:
-      - main
+      # - main
+      - "**" # Matches all branch and tag names.
   workflow_dispatch:
+
 jobs:
   deploy:
     runs-on: ubuntu-latest
@@ -13,14 +39,11 @@ jobs:
       - uses: actions/checkout@v2
         with:
           fetch-depth: 0
+
       - name: Deploy to Heroku
         env:
           HEROKU_API_TOKEN: ${{ secrets.HEROKU_API_KEY }}
           HEROKU_APP_NAME: ${{ secrets.HEROKU_APP_NAME }}
         run: >-
-          if [ ${GITHUB_EVENT_NAME} == "pull_request" ]; then
-            GITHUB_SHA=${{ github.event.pull_request.head.sha }}
-          fi
           git push -f https://heroku:${HEROKU_API_TOKEN}@git.heroku.com/${HEROKU_APP_NAME}.git
-          origin/main:main
-          ${GITHUB_SHA}:main
+          ${GITHUB_REF##*/}:main
