@@ -89,7 +89,11 @@ const App = () => {
         <form
           onSubmit={(e) => {
             e.preventDefault();
-            addTasks();
+            tasksx
+              .map((e) => e.name.toLowerCase())
+              .indexOf(inputTask.toLowerCase()) === -1 && inputTask !== ""
+              ? addTasks()
+              : setInputTask("");
           }}
         >
           <input
