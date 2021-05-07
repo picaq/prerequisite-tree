@@ -92,6 +92,15 @@ const App = () => {
     setInputArrow("");
   };
 
+  let node = tasksx.key;
+  let set = new Set();
+  for (let link of links) {
+    for (let [key, value] of Object.entries(link)) {
+      if (link.source === node || link.target === node) set.add(value);
+    }
+  }
+  console.log(set);
+
   return (
     <>
       <header>
@@ -104,7 +113,7 @@ const App = () => {
             e.preventDefault();
             tasksx
               .map((e) => e.name.toLowerCase())
-              .indexOf(inputTask.toLowerCase()) === -1 && inputTask !== ""
+              .indexOf(inputTask.toLowerCase()) === -1 && inputTask != ""
               ? addTasks()
               : setInputTask("");
           }}
@@ -126,9 +135,17 @@ const App = () => {
           />
 
           <datalist id="linkable">
-            {tasksx.map((node) => (
-              <option value={node.name} data-id={node.key} />
-            ))}
+            {tasksx
+              .filter(
+                (node) =>
+                  node.name.toLowerCase() != inputTask.toLowerCase() &&
+                  arrows
+                    .map((e) => e.source)
+                    .indexOf(inputTask.toLowerCase()) === -1,
+              )
+              .map((node) => (
+                <option value={node.name} data-id={node.key} />
+              ))}
           </datalist>
 
           <button>add task</button>
