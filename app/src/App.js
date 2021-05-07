@@ -112,8 +112,24 @@ const App = () => {
           <input
             onChange={(e) => setInputTask(e.target.value)}
             value={inputTask}
-            placeholder="add something"
+            placeholder="add a task"
           />
+
+          <input
+            list="linkable"
+            type="search"
+            name="query"
+            aria-label="Search for existing tasks to connect"
+            onChange={(e) => setInputArrow(e.target.value)}
+            value={inputArrow}
+            placeholder="add requirement"
+          />
+
+          <datalist id="linkable">
+            {tasksx.map((node) => (
+              <option value={node.name} data-id={node.key} />
+            ))}
+          </datalist>
 
           <button>add task</button>
         </form>
