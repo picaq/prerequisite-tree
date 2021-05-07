@@ -67,16 +67,29 @@ const App = () => {
 
   const [tasksx, setTasks] = React.useState(nodes);
   const [inputTask, setInputTask] = React.useState("");
+  console.table(tasksx);
 
   const addTasks = () => {
     console.log("inside addTasks");
     const newNode = {
       key: tasksx.length,
-      id: tasksx.length,
       name: inputTask,
     };
     setTasks([...tasksx, newNode]);
     setInputTask("");
+  };
+
+  const [arrows, setArrows] = React.useState(links);
+  const [inputArrow, setInputArrow] = React.useState("");
+
+  const addArrow = (requirement, thing) => {
+    console.log("inside addArrow");
+    const newLink = {
+      source: requirement,
+      target: thing,
+    };
+    setArrows([...arrows, newLink]);
+    setInputArrow("");
   };
 
   return (
