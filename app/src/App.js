@@ -144,7 +144,7 @@ const App = () => {
                     .indexOf(inputTask.toLowerCase()) === -1,
               )
               .map((node) => (
-                <option value={node.name} data-id={node.key} />
+                <option value={node.name} key={node.key} />
               ))}
           </datalist>
 
