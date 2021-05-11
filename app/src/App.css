@@ -1,6 +1,8 @@
 html {
   background: #171717;
+  /* background: #1a5877; */
   color: #ddd;
+  font-family: "Open Sans";
 }
 
 h1,
@@ -9,12 +11,14 @@ h3,
 h4,
 h5 {
   color: #ccc;
+  font-family: "Playfair Display", serif;
 }
 
 input,
 button {
   color: #ddd;
   background-color: #222;
+  /* background-color: cadetblue; */
 }
 
 circle {
