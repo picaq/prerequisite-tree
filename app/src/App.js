@@ -83,7 +83,20 @@ const App = () => {
       };
       setTasks([...tasksx, newNode]);
     }
+    if (
+      tasksx
+        .map((e) => e.name.toLowerCase())
+        .indexOf(inputArrow.toLowerCase()) === -1 &&
+      inputArrow != ""
+    ) {
+      const newNode = {
+        key: tasksx.length,
+        name: inputArrow,
+      };
+      setTasks([...tasksx, newNode]);
+    }
     setInputTask("");
+    setInputArrow("");
   };
 
   const [arrows, setArrows] = React.useState(links);
@@ -92,7 +105,7 @@ const App = () => {
   const addArrow = (thing, requirement) => {
     console.log("inside addArrow");
     const newLink = {
-      source: requirement,
+      source: requirement.key,
       target: thing,
     };
     setArrows([...arrows, newLink]);
