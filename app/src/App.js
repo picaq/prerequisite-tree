@@ -71,18 +71,25 @@ const App = () => {
 
   const addTasks = () => {
     console.log("inside addTasks");
-    const newNode = {
-      key: tasksx.length,
-      name: inputTask,
-    };
-    setTasks([...tasksx, newNode]);
+    if (
+      tasksx
+        .map((e) => e.name.toLowerCase())
+        .indexOf(inputTask.toLowerCase()) === -1 &&
+      inputTask != ""
+    ) {
+      const newNode = {
+        key: tasksx.length,
+        name: inputTask,
+      };
+      setTasks([...tasksx, newNode]);
+    }
     setInputTask("");
   };
 
   const [arrows, setArrows] = React.useState(links);
   const [inputArrow, setInputArrow] = React.useState("");
 
-  const addArrow = (requirement, thing) => {
+  const addArrow = (thing, requirement) => {
     console.log("inside addArrow");
     const newLink = {
       source: requirement,
@@ -92,14 +99,14 @@ const App = () => {
     setInputArrow("");
   };
 
-  let node = tasksx.key;
-  let set = new Set();
-  for (let link of links) {
-    for (let [key, value] of Object.entries(link)) {
-      if (link.source === node || link.target === node) set.add(value);
-    }
-  }
-  console.log(set);
+  // let node = tasksx.key;
+  // let set = new Set();
+  // for (let link of links) {
+  //   for (let [key, value] of Object.entries(link)) {
+  //     if (link.source === node || link.target === node) set.add(value);
+  //   }
+  // }
+  // console.log(set);
 
   return (
     <>
@@ -111,11 +118,13 @@ const App = () => {
         <form
           onSubmit={(e) => {
             e.preventDefault();
-            tasksx
-              .map((e) => e.name.toLowerCase())
-              .indexOf(inputTask.toLowerCase()) === -1 && inputTask != ""
-              ? addTasks()
-              : setInputTask("");
+            // tasksx
+            //   .map((e) => e.name.toLowerCase())
+            //   .indexOf(inputTask.toLowerCase()) === -1 && inputTask != ""
+            //   ? addTasks()
+            //   : setInputTask("");
+            addTasks();
+            addArrow(inputTask, inputArrow);
           }}
         >
           <input
