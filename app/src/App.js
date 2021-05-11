@@ -71,6 +71,23 @@ const App = () => {
 
   const addTasks = () => {
     console.log("inside addTasks");
+    if (
+      tasksx
+        .map((e) => e.name.toLowerCase())
+        .indexOf(inputTask.toLowerCase()) === -1 &&
+      inputTask != ""
+    ) {
+      const newNode = {
+        key: tasksx.length,
+        name: inputTask,
+      };
+      setTasks([...tasksx, newNode]);
+    }
+    // setInputTask("");
+  };
+
+  const addLinks = () => {
+    console.log("inside addTasks");
     let target, source;
     if (
       tasksx
@@ -142,10 +159,26 @@ const App = () => {
       </header>
 
       <main className="App">
+        <h2>Add Task</h2>
         <form
           onSubmit={(e) => {
             e.preventDefault();
             addTasks();
+          }}
+        >
+          <input
+            onChange={(e) => setInputTask(e.target.value)}
+            value={inputTask}
+            placeholder="add something new"
+          />
+
+          <button>add task</button>
+        </form>
+        <h2>Add Links</h2>
+        <form
+          onSubmit={(e) => {
+            e.preventDefault();
+            addLinks();
           }}
         >
           <input
