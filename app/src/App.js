@@ -71,6 +71,7 @@ const App = () => {
 
   const addTasks = () => {
     console.log("inside addTasks");
+    let target, source;
     if (
       tasksx
         .map((e) => e.name.toLowerCase())
@@ -82,6 +83,11 @@ const App = () => {
         name: inputTask,
       };
       setTasks([...tasksx, newNode]);
+      target = newNode.key;
+    } else {
+      target = tasksx
+        .map((e) => e.name.toLowerCase())
+        .indexOf(inputTask.toLowerCase());
     }
     if (
       tasksx
@@ -94,19 +100,27 @@ const App = () => {
         name: inputArrow,
       };
       setTasks([...tasksx, newNode]);
+      source = newNode.key;
+    } else {
+      source = tasksx
+        .map((e) => e.name.toLowerCase())
+        .indexOf(inputArrow.toLowerCase());
     }
     setInputTask("");
     setInputArrow("");
+    addArrow(target, source);
   };
 
   const [arrows, setArrows] = React.useState(links);
   const [inputArrow, setInputArrow] = React.useState("");
+  console.table(arrows);
 
   const addArrow = (thing, requirement) => {
     console.log("inside addArrow");
     const newLink = {
-      source: requirement.key,
-      target: thing,
+      source: tasksx[requirement],
+      target: tasksx[thing],
+      // index: arrows.length,
     };
     setArrows([...arrows, newLink]);
     setInputArrow("");
@@ -131,21 +145,19 @@ const App = () => {
         <form
           onSubmit={(e) => {
             e.preventDefault();
-            // tasksx
-            //   .map((e) => e.name.toLowerCase())
-            //   .indexOf(inputTask.toLowerCase()) === -1 && inputTask != ""
-            //   ? addTasks()
-            //   : setInputTask("");
             addTasks();
-            addArrow(inputTask, inputArrow);
           }}
         >
           <input
+            list="nodelist"
+            type="search"
+            name="query"
+            aria-label="Search for all tasks"
             onChange={(e) => setInputTask(e.target.value)}
             value={inputTask}
-            placeholder="add a task"
+            placeholder="pick a task"
           />
-
+          requires
           <input
             list="linkable"
             type="search"
@@ -155,7 +167,11 @@ const App = () => {
             value={inputArrow}
             placeholder="add requirement"
           />
-
+          <datalist id="nodelist">
+            {tasksx.map((node) => (
+              <option value={node.name} key={node.key} />
+            ))}
+          </datalist>
           <datalist id="linkable">
             {tasksx
               .filter(
@@ -169,12 +185,11 @@ const App = () => {
                 <option value={node.name} key={node.key} />
               ))}
           </datalist>
-
-          <button>add task</button>
+          <button>add link</button>
         </form>
 
         {/* variable={data} */}
-        <Tree nodes={tasksx} links={links} />
+        <Tree nodes={tasksx} links={arrows} />
       </main>
     </>
   );
