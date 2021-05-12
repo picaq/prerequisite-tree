@@ -19,7 +19,7 @@ const App = () => {
   //   loadTasks();
   // }, []);
 
-  const nodes = [
+  let nodes = [
     { key: 0, name: "Birthday Party" },
 
     { key: 1, name: "activities" },
@@ -42,7 +42,7 @@ const App = () => {
     { key: 14, name: "make invitations" },
   ];
 
-  const links = [
+  let links = [
     { source: 0, target: 0 },
     { source: 1, target: 0 },
     { source: 2, target: 0 },
@@ -65,9 +65,11 @@ const App = () => {
     { source: 14, target: 13 },
   ];
 
+  // const [savedNodes, setSavedNodes] = React.useState(nodes);
   const [tasksx, setTasks] = React.useState(nodes);
   const [inputTask, setInputTask] = React.useState("");
-  console.table(tasksx);
+  // console.table(tasksx);
+  // console.table(savedNodes);
 
   const addTasks = () => {
     console.log("inside addTasks");
@@ -81,13 +83,16 @@ const App = () => {
         key: tasksx.length,
         name: inputTask,
       };
+      nodes.push({ ...newNode });
+      console.table(nodes);
       setTasks([...tasksx, newNode]);
+      // setSavedNodes([...savedNodes, newNode]);
     }
     // setInputTask("");
   };
 
   const addLinks = () => {
-    console.log("inside addTasks");
+    console.log("inside addLinks");
     let target, source;
     if (
       tasksx
@@ -126,21 +131,38 @@ const App = () => {
     setInputTask("");
     setInputArrow("");
     addArrow(target, source);
+    console.log(links);
   };
 
+  // const [savedLinks, setSavedLinks] = React.useState(links);
   const [arrows, setArrows] = React.useState(links);
   const [inputArrow, setInputArrow] = React.useState("");
-  console.table(arrows);
+  // console.table(arrows);
+  // console.table(savedLinks);
 
   const addArrow = (thing, requirement) => {
     console.log("inside addArrow");
     const newLink = {
-      source: tasksx[requirement],
-      target: tasksx[thing],
+      source: requirement,
+      target: thing,
       // index: arrows.length,
     };
+    links.push({ ...newLink });
+    console.table(newLink);
     setArrows([...arrows, newLink]);
+    // setSavedLinks([...savedLinks, newLink]);
     setInputArrow("");
+  };
+
+  const clear = () => {
+    nodes.length = 0;
+    links.length = 0;
+    setTasks([]);
+    // setSavedNodes(nodes);
+    setArrows([]);
+    // setSavedLinks(links);
+    console.log({ nodes });
+    console.log({ links });
   };
 
   // let node = tasksx.key;
@@ -221,6 +243,16 @@ const App = () => {
           <button>add link</button>
         </form>
 
+        <h2>Options</h2>
+        <form
+          onSubmit={(e) => {
+            e.preventDefault();
+          }}
+        >
+          <button> save </button>
+          <button> load </button>
+          <button onClick={clear}>new graph</button>
+        </form>
         {/* variable={data} */}
         <Tree nodes={tasksx} links={arrows} />
       </main>
