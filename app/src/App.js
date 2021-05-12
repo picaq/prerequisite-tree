@@ -67,17 +67,90 @@ const App = () => {
 
   const [tasksx, setTasks] = React.useState(nodes);
   const [inputTask, setInputTask] = React.useState("");
+  console.table(tasksx);
 
   const addTasks = () => {
     console.log("inside addTasks");
-    const newNode = {
-      key: tasksx.length,
-      id: tasksx.length,
-      name: inputTask,
-    };
-    setTasks([...tasksx, newNode]);
-    setInputTask("");
+    if (
+      tasksx
+        .map((e) => e.name.toLowerCase())
+        .indexOf(inputTask.toLowerCase()) === -1 &&
+      inputTask != ""
+    ) {
+      const newNode = {
+        key: tasksx.length,
+        name: inputTask,
+      };
+      setTasks([...tasksx, newNode]);
+    }
+    // setInputTask("");
   };
+
+  const addLinks = () => {
+    console.log("inside addTasks");
+    let target, source;
+    if (
+      tasksx
+        .map((e) => e.name.toLowerCase())
+        .indexOf(inputTask.toLowerCase()) === -1 &&
+      inputTask != ""
+    ) {
+      const newNode = {
+        key: tasksx.length,
+        name: inputTask,
+      };
+      setTasks([...tasksx, newNode]);
+      target = newNode.key;
+    } else {
+      target = tasksx
+        .map((e) => e.name.toLowerCase())
+        .indexOf(inputTask.toLowerCase());
+    }
+    if (
+      tasksx
+        .map((e) => e.name.toLowerCase())
+        .indexOf(inputArrow.toLowerCase()) === -1 &&
+      inputArrow != ""
+    ) {
+      const newNode = {
+        key: tasksx.length,
+        name: inputArrow,
+      };
+      setTasks([...tasksx, newNode]);
+      source = newNode.key;
+    } else {
+      source = tasksx
+        .map((e) => e.name.toLowerCase())
+        .indexOf(inputArrow.toLowerCase());
+    }
+    setInputTask("");
+    setInputArrow("");
+    addArrow(target, source);
+  };
+
+  const [arrows, setArrows] = React.useState(links);
+  const [inputArrow, setInputArrow] = React.useState("");
+  console.table(arrows);
+
+  const addArrow = (thing, requirement) => {
+    console.log("inside addArrow");
+    const newLink = {
+      source: tasksx[requirement],
+      target: tasksx[thing],
+      // index: arrows.length,
+    };
+    setArrows([...arrows, newLink]);
+    setInputArrow("");
+  };
+
+  // let node = tasksx.key;
+  // let set = new Set();
+  // for (let link of links) {
+  //   for (let [key, value] of Object.entries(link)) {
+  //     if (link.source === node || link.target === node) set.add(value);
+  //   }
+  // }
+  // console.log(set);
 
   return (
     <>
@@ -86,6 +159,7 @@ const App = () => {
       </header>
 
       <main className="App">
+        <h2>Add Task</h2>
         <form
           onSubmit={(e) => {
             e.preventDefault();
@@ -95,14 +169,60 @@ const App = () => {
           <input
             onChange={(e) => setInputTask(e.target.value)}
             value={inputTask}
-            placeholder="add something"
+            placeholder="add something new"
           />
 
           <button>add task</button>
         </form>
+        <h2>Add Links</h2>
+        <form
+          onSubmit={(e) => {
+            e.preventDefault();
+            addLinks();
+          }}
+        >
+          <input
+            list="nodelist"
+            type="search"
+            name="query"
+            aria-label="Search for all tasks"
+            onChange={(e) => setInputTask(e.target.value)}
+            value={inputTask}
+            placeholder="pick a task"
+          />
+          requires
+          <input
+            list="linkable"
+            type="search"
+            name="query"
+            aria-label="Search for existing tasks to connect"
+            onChange={(e) => setInputArrow(e.target.value)}
+            value={inputArrow}
+            placeholder="add requirement"
+          />
+          <datalist id="nodelist">
+            {tasksx.map((node) => (
+              <option value={node.name} key={node.key} />
+            ))}
+          </datalist>
+          <datalist id="linkable">
+            {tasksx
+              .filter(
+                (node) =>
+                  node.name.toLowerCase() != inputTask.toLowerCase() &&
+                  arrows
+                    .map((e) => e.source)
+                    .indexOf(inputTask.toLowerCase()) === -1,
+              )
+              .map((node) => (
+                <option value={node.name} key={node.key} />
+              ))}
+          </datalist>
+          <button>add link</button>
+        </form>
 
         {/* variable={data} */}
-        <Tree nodes={tasksx} links={links} />
+        <Tree nodes={tasksx} links={arrows} />
       </main>
     </>
   );

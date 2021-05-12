@@ -65,8 +65,8 @@ function Tree({ links, nodes }) {
     }
 
     function ticked() {
-      updateLinks();
       updateNodes();
+      updateLinks();
     }
   });
 
