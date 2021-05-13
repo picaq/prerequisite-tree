@@ -1,7 +1,5 @@
 import * as React from "react";
 
-import * as d3 from "d3";
-
 import * as apiClient from "./apiClient";
 // import { useD3 } from "./hooks/useD3";
 
@@ -159,7 +157,10 @@ const App = () => {
     // links.length = 0;
     setTasks([]);
     // setSavedNodes([]);
+    setInputArrow("");
+    setInputTask("");
     setArrows([]);
+    setGraph("");
     // setSavedLinks([]);
     // console.log({ savedNodes });
     // console.log({ savedLinks });
@@ -173,6 +174,22 @@ const App = () => {
   //   }
   // }
   // console.log(set);
+
+  const [graph, setGraph] = React.useState("Birthday Party");
+
+  const onSave = async (e) => {
+    let nodes = tasksx,
+      links = arrows,
+      graph = graph;
+    let saveData = { nodes, links, graph };
+    e.preventDefault(); // prevents refreshing
+    let canAdd = saveData.nodes.length > 0 && graph.length > 0;
+    if (canAdd) {
+      await apiClient.addTask(task);
+      // loadTasks();
+      // setTask("");
+    }
+  };
 
   return (
     <>
@@ -242,14 +259,19 @@ const App = () => {
           </datalist>
           <button>add link</button>
         </form>
-
-        <h2>Options</h2>
+        <h2>Options for {graph ? graph : "untitled goal"}</h2>
         <form
           onSubmit={(e) => {
             e.preventDefault();
           }}
         >
-          <button> save </button>
+          <input
+            type="text"
+            value={graph}
+            onChange={(e) => setGraph(e.target.value)}
+            placeholder="name me to save me"
+          ></input>
+          <button onClick={onSave}> save </button>
           <button> load </button>
           <button onClick={clear}>new graph</button>
         </form>
