@@ -66,9 +66,9 @@ const App = () => {
   ];
 
   // const [savedNodes, setSavedNodes] = React.useState(nodes);
-  const [tasksx, setTasks] = React.useState(nodes);
+  const [tasksx, setTasks] = React.useState([...nodes]);
   const [inputTask, setInputTask] = React.useState("");
-  // console.table(tasksx);
+  console.table(tasksx);
   // console.table(savedNodes);
 
   const addTasks = () => {
@@ -83,10 +83,10 @@ const App = () => {
         key: tasksx.length,
         name: inputTask,
       };
-      nodes.push({ ...newNode });
-      console.table(nodes);
+      // nodes.push({ ...newNode });
+      // console.table(nodes);
+      // setSavedNodes([...savedNodes, { ...newNode }]);
       setTasks([...tasksx, newNode]);
-      // setSavedNodes([...savedNodes, newNode]);
     }
     // setInputTask("");
   };
@@ -131,13 +131,13 @@ const App = () => {
     setInputTask("");
     setInputArrow("");
     addArrow(target, source);
-    console.log(links);
+    // console.log(links);
   };
 
   // const [savedLinks, setSavedLinks] = React.useState(links);
-  const [arrows, setArrows] = React.useState(links);
+  const [arrows, setArrows] = React.useState([...links]);
   const [inputArrow, setInputArrow] = React.useState("");
-  // console.table(arrows);
+  console.table(arrows);
   // console.table(savedLinks);
 
   const addArrow = (thing, requirement) => {
@@ -147,22 +147,22 @@ const App = () => {
       target: thing,
       // index: arrows.length,
     };
-    links.push({ ...newLink });
-    console.table(newLink);
+    // links.push({ ...newLink });
+    // console.table(links);
+    // setSavedLinks([...savedLinks, { ...newLink }]);
     setArrows([...arrows, newLink]);
-    // setSavedLinks([...savedLinks, newLink]);
     setInputArrow("");
   };
 
   const clear = () => {
-    nodes.length = 0;
-    links.length = 0;
+    // nodes.length = 0;
+    // links.length = 0;
     setTasks([]);
-    // setSavedNodes(nodes);
+    // setSavedNodes([]);
     setArrows([]);
-    // setSavedLinks(links);
-    console.log({ nodes });
-    console.log({ links });
+    // setSavedLinks([]);
+    // console.log({ savedNodes });
+    // console.log({ savedLinks });
   };
 
   // let node = tasksx.key;
