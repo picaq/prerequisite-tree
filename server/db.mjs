@@ -5,12 +5,20 @@ const db = initDb();
 
 export const getTasks = async () => await db.any("SELECT * FROM tasks");
 
-export const addTask = async (graph, nodes, links) =>
+// original
+// export const addTask = async (name) =>
+//   (
+//     await db.any("INSERT INTO tasks(name) VALUES($1) RETURNING id, name", [
+//       name,
+//     ])
+//   )[0];
+
+export const addTask = async (...saveData) => {
+  // let [graph, nodes, links] = [name.graph, name.nodes, name.links];
   await db.any("INSERT INTO tasks(graph, nodes, links) VALUES($1, $2, $3);", [
-    graph,
-    nodes,
-    links,
+    ...saveData,
   ]);
+};
 
 function initDb() {
   let connection;

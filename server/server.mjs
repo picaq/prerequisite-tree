@@ -13,10 +13,18 @@ tasks.get("/", async (request, response) => {
   response.json(tasks);
 });
 
+// original
+// tasks.use(express.json());
+// tasks.post("/", async (request, response) => {
+//   const { name } = request.body;
+//   const task = await db.addTask(name);
+//   response.status(201).json(task);
+// });
+
 tasks.use(express.json());
 tasks.post("/", async (request, response) => {
-  const { graph, nodes, links } = request.body;
-  const task = await db.addTask(graph, nodes, links);
+  const { ...saveData } = request.body;
+  const task = await db.addTask(...saveData);
   response.status(201).json(task);
 });
 

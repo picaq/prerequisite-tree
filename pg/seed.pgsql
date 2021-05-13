@@ -27,8 +27,8 @@ SET default_table_access_method = heap;
 CREATE TABLE public.tasks (
     id integer NOT NULL,
     graph text,
-    nodes json,
-    links json
+    nodes text,
+    links text
 );
 
 
@@ -80,7 +80,7 @@ ALTER TABLE ONLY public.tasks ALTER COLUMN id SET DEFAULT nextval('public.tasks_
 -- Name: tasks_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('public.tasks_id_seq', 3, true);
+SELECT pg_catalog.setval('public.tasks_id_seq', 1, true);
 
 
 --
