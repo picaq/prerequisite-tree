@@ -15,8 +15,8 @@ tasks.get("/", async (request, response) => {
 
 tasks.use(express.json());
 tasks.post("/", async (request, response) => {
-  const { name } = request.body;
-  const task = await db.addTask(name);
+  const { graph, nodes, links } = request.body;
+  const task = await db.addTask(graph, nodes, links);
   response.status(201).json(task);
 });
 

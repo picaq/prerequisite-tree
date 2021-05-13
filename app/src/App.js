@@ -179,13 +179,12 @@ const App = () => {
 
   const onSave = async (e) => {
     let nodes = tasksx,
-      links = arrows,
-      graph = graph;
-    let saveData = { nodes, links, graph };
+      links = arrows;
+    let saveData = { graph, nodes, links };
     e.preventDefault(); // prevents refreshing
     let canAdd = saveData.nodes.length > 0 && graph.length > 0;
     if (canAdd) {
-      await apiClient.addTask(task);
+      await apiClient.addTask(saveData);
       // loadTasks();
       // setTask("");
     }
