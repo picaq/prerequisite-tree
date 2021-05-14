@@ -13,12 +13,13 @@ export const getTasks = async () => await db.any("SELECT * FROM tasks");
 //     ])
 //   )[0];
 
-export const addTask = async (...saveData) => {
+export const addTask = async (graph, nodes, links) =>
   // let [graph, nodes, links] = [name.graph, name.nodes, name.links];
   await db.any("INSERT INTO tasks(graph, nodes, links) VALUES($1, $2, $3);", [
-    ...saveData,
+    graph,
+    nodes,
+    links,
   ]);
-};
 
 function initDb() {
   let connection;

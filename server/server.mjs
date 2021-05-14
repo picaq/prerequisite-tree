@@ -8,10 +8,10 @@ const port = process.env.PORT || 4000;
 
 const tasks = express.Router();
 
-tasks.get("/", async (request, response) => {
-  const tasks = await db.getTasks();
-  response.json(tasks);
-});
+// tasks.get("/", async (request, response) => {
+//   const tasks = await db.getTasks();
+//   response.json(tasks);
+// });
 
 // original
 // tasks.use(express.json());
@@ -23,8 +23,8 @@ tasks.get("/", async (request, response) => {
 
 tasks.use(express.json());
 tasks.post("/", async (request, response) => {
-  const { ...saveData } = request.body;
-  const task = await db.addTask(...saveData);
+  const { graph, nodes, links } = request.body;
+  const task = await db.addTask(graph, nodes, links);
   response.status(201).json(task);
 });
 
