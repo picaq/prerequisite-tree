@@ -9,7 +9,7 @@ export const addTask = async (saveData) => {
     headers: {
       "Content-Type": "application/json",
     },
-    body: JSON.stringify({ saveData }),
+    body: JSON.stringify(saveData),
   });
   return response.json();
 };
