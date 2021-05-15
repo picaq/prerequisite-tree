@@ -224,7 +224,13 @@ const App = () => {
         <h1>Prerequisite Tree</h1>
       </header>
 
-      <main className="App">
+      <main
+        className="App"
+        // style={{
+        //   backgroundImage: `url(${image.hdurl})`,
+        //   backgroundSize: "cover",
+        // }}
+      >
         <h2>Add Task</h2>
         <form
           onSubmit={(e) => {
@@ -303,7 +309,15 @@ const App = () => {
           <button onClick={clear}>new graph</button>
         </form>
         {/* variable={data} */}
-        <Tree nodes={tasksx} links={arrows} />
+        <Tree
+          nodes={tasksx}
+          links={arrows}
+          image={image}
+          style={{
+            backgroundImage: `url(${image.hdurl})`,
+            backgroundSize: "cover",
+          }}
+        />
       </main>
     </>
   );
