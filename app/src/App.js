@@ -17,6 +17,34 @@ const App = () => {
   //   loadTasks();
   // }, []);
 
+  const [image, setImage] = React.useState([""]);
+  // const loadImg = async () => setTasks(await apiClient.getTasks());
+  const loadImage = async () => {
+    try {
+      const response = await fetch(
+        "https://api.nasa.gov/planetary/apod?api_key=DEMO_KEY",
+        {
+          headers: {
+            "Access-Control-Allow-Origin": "*",
+            "Access-Control-Allow-Methods": "GET,POST,PUT,DELETE,OPTIONS",
+            "Access-Control-Allow-Headers":
+              "Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With",
+          },
+        },
+      );
+      const jsonData = await response.json();
+      // setColor(Math.floor(361* Math.random()));
+      setImage(jsonData);
+      // console.log(color, jsonData);
+    } catch (error) {
+      console.error(error.message);
+    }
+  };
+
+  React.useEffect(() => {
+    loadImage();
+  }, []);
+
   let nodes = [
     { key: 0, name: "Birthday Party" },
 
