@@ -10,8 +10,8 @@ import Tree from "./components/Tree";
 
 // import dotenv from "dotenv";
 
-console.log(process.env.REACT_APP_NASA_API_KEY);
-console.log(process.env.NASA_API_KEY);
+// console.log(process.env.REACT_APP_NASA_API_KEY);
+// console.log(process.env.NASA_API_KEY);
 
 const App = () => {
   // const [tasks, setTasks] = React.useState([]);
