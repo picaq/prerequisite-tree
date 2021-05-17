@@ -25,6 +25,8 @@ export const getImage = async () => {
     `https://api.nasa.gov/planetary/apod?api_key=${
       process.env.REACT_APP_NASA_API_KEY
         ? process.env.REACT_APP_NASA_API_KEY
+        : process.env.NASA_API_KEY
+        ? process.env.NASA_API_KEY
         : "DEMO_KEY"
     }`,
     {
