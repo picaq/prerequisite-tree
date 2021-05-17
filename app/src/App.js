@@ -126,12 +126,12 @@ const App = () => {
     if (
       tasksx
         .map((e) => e.name.toLowerCase())
-        .indexOf(inputTask.toLowerCase()) === -1 &&
+        .indexOf(inputTask.toLowerCase().trim()) === -1 &&
       inputTask != ""
     ) {
       const newNode = {
         key: tasksx.length,
-        name: inputTask,
+        name: inputTask.trim(),
       };
       // nodes.push({ ...newNode });
       // console.table(nodes);
@@ -147,7 +147,7 @@ const App = () => {
     if (
       tasksx
         .map((e) => e.name.toLowerCase())
-        .indexOf(inputTask.toLowerCase()) === -1 &&
+        .indexOf(inputTask.toLowerCase().trim()) === -1 &&
       inputTask != ""
     ) {
       const newNode = {
@@ -159,29 +159,31 @@ const App = () => {
     } else {
       target = tasksx
         .map((e) => e.name.toLowerCase())
-        .indexOf(inputTask.toLowerCase());
+        .indexOf(inputTask.toLowerCase().trim());
     }
     if (
       tasksx
         .map((e) => e.name.toLowerCase())
-        .indexOf(inputArrow.toLowerCase()) === -1 &&
+        .indexOf(inputArrow.toLowerCase().trim()) === -1 &&
       inputArrow != ""
     ) {
       const newNode = {
         key: tasksx.length,
-        name: inputArrow,
+        name: inputArrow.trim(),
       };
       setTasks([...tasksx, newNode]);
       source = newNode.key;
     } else {
       source = tasksx
         .map((e) => e.name.toLowerCase())
-        .indexOf(inputArrow.toLowerCase());
+        .indexOf(inputArrow.toLowerCase().trim());
     }
-    setInputTask("");
-    setInputArrow("");
-    addArrow(target, source);
-    // console.log(links);
+    if (inputArrow !== "" && inputTask !== "") {
+      setInputTask("");
+      setInputArrow("");
+      addArrow(target, source);
+      // console.log(links);
+    }
   };
 
   // const [savedLinks, setSavedLinks] = React.useState(links);
@@ -274,7 +276,22 @@ const App = () => {
         <form
           onSubmit={(e) => {
             e.preventDefault();
-            addLinks();
+            if (
+              (inputTask !== "" &&
+                inputArrow !== "" &&
+                inputTask.toLowerCase().trim() !==
+                  inputArrow.toLowerCase().trim() &&
+                tasksx.filter(
+                  (node) =>
+                    node.name.toLowerCase() === inputTask.toLowerCase().trim(),
+                )) ||
+              tasksx.filter(
+                (node) =>
+                  node.name.toLowerCase() === inputArrow.toLowerCase().trim(),
+              )
+            ) {
+              addLinks();
+            } else console.error("cannot make links");
           }}
         >
           <input
@@ -282,6 +299,7 @@ const App = () => {
             type="search"
             name="query"
             aria-label="Search for all tasks"
+            autocomplete="off"
             onChange={(e) => setInputTask(e.target.value)}
             value={inputTask}
             placeholder="pick a task"
@@ -292,6 +310,7 @@ const App = () => {
             type="search"
             name="query"
             aria-label="Search for existing tasks to connect"
+            autocomplete="off"
             onChange={(e) => setInputArrow(e.target.value)}
             value={inputArrow}
             placeholder="add requirement"
@@ -305,10 +324,10 @@ const App = () => {
             {tasksx
               .filter(
                 (node) =>
-                  node.name.toLowerCase() != inputTask.toLowerCase() &&
+                  node.name.toLowerCase() != inputTask.toLowerCase().trim() &&
                   arrows
                     .map((e) => e.source)
-                    .indexOf(inputTask.toLowerCase()) === -1,
+                    .indexOf(inputTask.toLowerCase().trim()) === -1,
               )
               .map((node) => (
                 <option value={node.name} key={node.key} />
