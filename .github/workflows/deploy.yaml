@@ -37,9 +37,13 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
+      - uses: akhileshns/heroku-deploy@v3.12.12
         with:
-          fetch-depth: 0
-          # usedocker: true
+          # fetch-depth: 0
+          heroku_api_key: ${{ secrets.HEROKU_API_KEY }}
+          heroku_api_name: ${{ secrets.HEROKU_APP_NAME }}
+          heroku_email: ${{ secrets.HEROKU_EMAIL }}
+          usedocker: true
           docker_build_args:
             NASA_API_KEY
       - name: Deploy to Heroku
