@@ -8,8 +8,6 @@ import "./App.css";
 import BarChart from "./components/BarChart";
 import Tree from "./components/Tree";
 
-require("dotenv").config();
-
 const App = () => {
   // const [tasks, setTasks] = React.useState([]);
 
