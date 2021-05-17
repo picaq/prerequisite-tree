@@ -8,6 +8,8 @@ import "./App.css";
 import BarChart from "./components/BarChart";
 import Tree from "./components/Tree";
 
+require("dotenv").config();
+
 const App = () => {
   // const [tasks, setTasks] = React.useState([]);
 
@@ -39,6 +41,7 @@ const App = () => {
       // console.log(color, jsonData);
       console.log("NASA API key being used");
     } catch (error) {
+      console.warn("warning: DEMO_KEY being used");
       const response = await fetch(
         "https://api.nasa.gov/planetary/apod?api_key=DEMO_KEY",
         {
@@ -52,7 +55,6 @@ const App = () => {
       );
       const jsonData = await response.json();
       setImage(jsonData);
-      console.warn("warning: DEMO_KEY being used");
     }
   };
 
