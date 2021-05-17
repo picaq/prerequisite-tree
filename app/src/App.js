@@ -37,6 +37,7 @@ const App = () => {
       // setColor(Math.floor(361* Math.random()));
       // setImage(jsonData);
       // console.log(color, jsonData);
+      console.log("NASA API key being used");
     } catch (error) {
       const response = await fetch(
         "https://api.nasa.gov/planetary/apod?api_key=DEMO_KEY",
@@ -51,6 +52,7 @@ const App = () => {
       );
       const jsonData = await response.json();
       setImage(jsonData);
+      console.warn("warning: DEMO_KEY being used");
     }
   };
 
