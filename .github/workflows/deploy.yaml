@@ -41,7 +41,7 @@ jobs:
         with:
           # fetch-depth: 0
           heroku_api_key: ${{ secrets.HEROKU_API_KEY }}
-          heroku_api_name: ${{ secrets.HEROKU_APP_NAME }}
+          heroku_app_name: ${{ secrets.HEROKU_APP_NAME }}
           heroku_email: ${{ secrets.HEROKU_EMAIL }}
           usedocker: true
           docker_build_args:
