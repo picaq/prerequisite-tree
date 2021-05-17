@@ -36,6 +36,6 @@ export const getImage = async () => {
       },
     },
   );
-  console.log(process.env.NASA_API_KEY);
+  // console.log(process.env.NASA_API_KEY);
   return response.json();
 };
