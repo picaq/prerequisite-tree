@@ -8,6 +8,10 @@ import "./App.css";
 import BarChart from "./components/BarChart";
 import Tree from "./components/Tree";
 
+// import dotenv from "dotenv";
+
+// console.log(process.env.REACT_APP_NASA_API_KEY);
+
 const App = () => {
   // const [tasks, setTasks] = React.useState([]);
 
@@ -20,6 +24,8 @@ const App = () => {
   const [image, setImage] = React.useState([""]);
   // const loadImg = async () => setTasks(await apiClient.getTasks());
   const loadImage = async () => {
+    // dotenv.config({ path: "../../.env" });
+    // console.log(process.env.REACT_APP_NASA_API_KEY);
     try {
       // const response = await fetch(
       //   "https://api.nasa.gov/planetary/apod?api_key=DEMO_KEY",
@@ -42,13 +48,15 @@ const App = () => {
       console.warn("warning: DEMO_KEY being used");
       const response = await fetch(
         "https://api.nasa.gov/planetary/apod?api_key=DEMO_KEY",
+        // "https://api.nasa.gov/planetary/apod?api_key=" +
+        //   process.env.REACT_APP_NASA_API_KEY,
         {
-          headers: {
-            "Access-Control-Allow-Origin": "*",
-            "Access-Control-Allow-Methods": "GET,POST,PUT,DELETE,OPTIONS",
-            "Access-Control-Allow-Headers":
-              "Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With",
-          },
+          // headers: {
+          //   "Access-Control-Allow-Origin": "*",
+          //   "Access-Control-Allow-Methods": "GET,POST,PUT,DELETE,OPTIONS",
+          //   "Access-Control-Allow-Headers":
+          //     "Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With",
+          // },
         },
       );
       const jsonData = await response.json();
