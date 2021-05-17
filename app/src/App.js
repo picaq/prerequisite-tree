@@ -178,10 +178,12 @@ const App = () => {
         .map((e) => e.name.toLowerCase())
         .indexOf(inputArrow.toLowerCase());
     }
-    setInputTask("");
-    setInputArrow("");
-    addArrow(target, source);
-    // console.log(links);
+    if (inputArrow !== "" && inputTask !== "") {
+      setInputTask("");
+      setInputArrow("");
+      addArrow(target, source);
+      // console.log(links);
+    }
   };
 
   // const [savedLinks, setSavedLinks] = React.useState(links);
@@ -274,7 +276,19 @@ const App = () => {
         <form
           onSubmit={(e) => {
             e.preventDefault();
-            addLinks();
+            if (
+              (inputTask !== "" &&
+                inputArrow !== "" &&
+                inputTask.toLowerCase() !== inputArrow.toLowerCase() &&
+                tasksx.filter(
+                  (node) => node.name.toLowerCase() === inputTask.toLowerCase(),
+                )) ||
+              tasksx.filter(
+                (node) => node.name.toLowerCase() === inputArrow.toLowerCase(),
+              )
+            ) {
+              addLinks();
+            } else console.error("cannot make links");
           }}
         >
           <input
