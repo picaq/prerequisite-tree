@@ -364,7 +364,3 @@ const App = () => {
 // };
 
 export default App;
-
-// adding some comments to push
-// ➜  prerequisite-tree git:(api) git fetch --all --unshallow
-// fatal: --unshallow on a complete repository does not make sense
