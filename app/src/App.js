@@ -8,6 +8,11 @@ import "./App.css";
 import BarChart from "./components/BarChart";
 import Tree from "./components/Tree";
 
+// import dotenv from "dotenv";
+
+console.log(process.env.REACT_APP_NASA_API_KEY);
+console.log(process.env.NASA_API_KEY);
+
 const App = () => {
   // const [tasks, setTasks] = React.useState([]);
 
@@ -16,6 +21,53 @@ const App = () => {
   // React.useEffect(() => {
   //   loadTasks();
   // }, []);
+
+  const [image, setImage] = React.useState([""]);
+  // const loadImg = async () => setTasks(await apiClient.getTasks());
+  const loadImage = async () => {
+    // dotenv.config({ path: "../../.env" });
+    // console.log(process.env.REACT_APP_NASA_API_KEY);
+    try {
+      // const response = await fetch(
+      //   "https://api.nasa.gov/planetary/apod?api_key=DEMO_KEY",
+      //   {
+      //     headers: {
+      //       "Access-Control-Allow-Origin": "*",
+      //       "Access-Control-Allow-Methods": "GET,POST,PUT,DELETE,OPTIONS",
+      //       "Access-Control-Allow-Headers":
+      //         "Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With",
+      //     },
+      //   },
+      // );
+      // const jsonData = await response.json();
+      setImage(await apiClient.getImage());
+      // setColor(Math.floor(361* Math.random()));
+      // setImage(jsonData);
+      // console.log(color, jsonData);
+      console.log("NASA API key being used");
+    } catch (error) {
+      console.warn("warning: DEMO_KEY being used");
+      const response = await fetch(
+        "https://api.nasa.gov/planetary/apod?api_key=DEMO_KEY",
+        // "https://api.nasa.gov/planetary/apod?api_key=" +
+        //   process.env.REACT_APP_NASA_API_KEY,
+        {
+          headers: {
+            "Access-Control-Allow-Origin": "*",
+            "Access-Control-Allow-Methods": "GET,POST,PUT,DELETE,OPTIONS",
+            "Access-Control-Allow-Headers":
+              "Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With",
+          },
+        },
+      );
+      const jsonData = await response.json();
+      setImage(jsonData);
+    }
+  };
+
+  React.useEffect(() => {
+    loadImage();
+  }, []);
 
   let nodes = [
     { key: 0, name: "Birthday Party" },
@@ -196,7 +248,13 @@ const App = () => {
         <h1>Prerequisite Tree</h1>
       </header>
 
-      <main className="App">
+      <main
+        className="App"
+        // style={{
+        //   backgroundImage: `url(${image.hdurl})`,
+        //   backgroundSize: "cover",
+        // }}
+      >
         <h2>Add Task</h2>
         <form
           onSubmit={(e) => {
@@ -275,7 +333,7 @@ const App = () => {
           <button onClick={clear}>new graph</button>
         </form>
         {/* variable={data} */}
-        <Tree nodes={tasksx} links={arrows} />
+        <Tree nodes={tasksx} links={arrows} image={image} />
       </main>
     </>
   );

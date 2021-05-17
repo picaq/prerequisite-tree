@@ -1,4 +1,4 @@
-# name: Deploy to Heroku
+name: Deploy to Heroku
 
 # on:
 #   pull_request:
@@ -37,13 +37,21 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
+      - uses: akhileshns/heroku-deploy@v3.12.12
         with:
-          fetch-depth: 0
-
-      - name: Deploy to Heroku
+          # fetch-depth: 0
+          heroku_api_key: ${{ secrets.HEROKU_API_KEY }}
+          heroku_app_name: ${{ secrets.HEROKU_APP_NAME }}
+          heroku_email: ${{ secrets.HEROKU_EMAIL }}
+          usedocker: true
+          docker_build_args:
+            REACT_APP_NASA_API_KEY
+      # - name: Deploy to Heroku
         env:
           HEROKU_API_TOKEN: ${{ secrets.HEROKU_API_KEY }}
           HEROKU_APP_NAME: ${{ secrets.HEROKU_APP_NAME }}
-        run: >-
-          git push -f https://heroku:${HEROKU_API_TOKEN}@git.heroku.com/${HEROKU_APP_NAME}.git
-          ${GITHUB_REF##*/}:main
+          NASA_API_KEY: ${{ secrets.NASA_API_KEY }}
+          REACT_NASA_API_KEY: ${{ secrets.REACT_APP_NASA_API_KEY }}
+        # run: >-
+        #   git push -f https://heroku:${HEROKU_API_TOKEN}@git.heroku.com/${HEROKU_APP_NAME}.git
+        #   ${GITHUB_REF##*/}:main
