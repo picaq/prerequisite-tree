@@ -282,6 +282,7 @@ const App = () => {
             type="search"
             name="query"
             aria-label="Search for all tasks"
+            autocomplete="off"
             onChange={(e) => setInputTask(e.target.value)}
             value={inputTask}
             placeholder="pick a task"
@@ -292,6 +293,7 @@ const App = () => {
             type="search"
             name="query"
             aria-label="Search for existing tasks to connect"
+            autocomplete="off"
             onChange={(e) => setInputArrow(e.target.value)}
             value={inputArrow}
             placeholder="add requirement"
