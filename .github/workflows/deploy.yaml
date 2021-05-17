@@ -39,7 +39,7 @@ jobs:
       - uses: actions/checkout@v2
         with:
           fetch-depth: 0
-          usedocker: true
+          # usedocker: true
           docker_build_args:
             NASA_API_KEY
       - name: Deploy to Heroku
