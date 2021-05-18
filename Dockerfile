@@ -1,6 +1,6 @@
 FROM node:lts-alpine as react
 ARG NODE_ENV=production
-ARG NASA_API_KEY
+ARG REACT_APP_NASA_API_KEY
 RUN npm install -g npm@latest
 WORKDIR /app
 COPY ./app .
