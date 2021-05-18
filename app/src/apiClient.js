@@ -17,6 +17,13 @@ export const addTask = async (saveData) => {
   // return response.json();
 };
 
+export const getGraphs = async () => {
+  const response = await fetch("/api/graphs");
+  // console.log(response.json());
+  return response.json();
+  // return { response: "pong" };
+};
+
 export const getImage = async () => {
   // dotenv.config({ path: "../../.env" });
   dotenv.config({ path: "../.env" });
@@ -42,12 +49,7 @@ export const getImage = async () => {
   return response.json();
 };
 
-export const getTasks = async () => {
-  const response = await fetch("/api/tasks");
-  return response.json();
-};
-
-export const getGraphs = async () => {
-  const response = await fetch("/api/graphs");
-  return response.json();
-};
+// export const getTasks = async () => {
+//   const response = await fetch("/api/tasks");
+//   return response.json();
+// };

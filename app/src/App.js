@@ -26,25 +26,9 @@ const App = () => {
   const [image, setImage] = React.useState([""]);
   // const loadImg = async () => setTasks(await apiClient.getTasks());
   const loadImage = async () => {
-    // dotenv.config({ path: "../../.env" });
-    // console.log(process.env.REACT_APP_NASA_API_KEY);
     try {
-      // const response = await fetch(
-      //   "https://api.nasa.gov/planetary/apod?api_key=DEMO_KEY",
-      //   {
-      //     headers: {
-      //       "Access-Control-Allow-Origin": "*",
-      //       "Access-Control-Allow-Methods": "GET,POST,PUT,DELETE,OPTIONS",
-      //       "Access-Control-Allow-Headers":
-      //         "Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With",
-      //     },
-      //   },
-      // );
-      // const jsonData = await response.json();
       setImage(await apiClient.getImage());
-      // setColor(Math.floor(361* Math.random()));
-      // setImage(jsonData);
-      // console.log(color, jsonData);
+
       console.log("NASA API key being used");
     } catch (error) {
       console.warn("warning: DEMO_KEY being used");
@@ -61,8 +45,8 @@ const App = () => {
           },
         },
       );
-      const jsonData = await response.json();
-      setImage(jsonData);
+      // const jsonData = await response.json();
+      // setImage(jsonData);
     }
   };
 
@@ -232,6 +216,7 @@ const App = () => {
 
   const [graph, setGraph] = React.useState("Birthday Party");
 
+  // saving to db
   const onSave = async (e) => {
     let nodes = tasksx,
       links = arrows;
@@ -245,16 +230,15 @@ const App = () => {
     }
   };
 
+  // loading list from db
   const [graphInfo, setGraphInfo] = React.useState([]);
 
   const getGraphInfo = async () => {
     try {
-      const response = async () => setGraphInfo(await apiClient.getGraphs());
-      const jsonData = await response.json();
-      setGraphInfo(jsonData);
-      console.log(jsonData);
+      setGraphInfo(await apiClient.getGraphs());
+      console.log(graphInfo);
     } catch (error) {
-      console.error("cannot get graphInfo");
+      console.error("cannot GET graphInfo");
     }
   };
 

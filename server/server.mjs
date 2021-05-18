@@ -21,13 +21,14 @@ const graphs = express.Router();
 tasks.use(express.json());
 graphs.use(express.json());
 
+// sends save data to db
 tasks.post("/", async (request, response) => {
   const { graph, nodes, links } = request.body;
   const task = await db.addTask(graph, nodes, links);
   response.status(201).json(task);
 });
 
-// load list of graphs
+// load list of graphs from db
 graphs.get("/", async (request, response) => {
   const graphs = await db.getGraphs();
   response.json(graphs);
