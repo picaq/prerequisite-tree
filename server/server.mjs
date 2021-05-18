@@ -8,6 +8,7 @@ const port = process.env.PORT || 4000;
 
 const tasks = express.Router();
 const graphs = express.Router();
+const graph = express.Router();
 
 // original
 // tasks.use(express.json());
@@ -20,6 +21,7 @@ const graphs = express.Router();
 // save a graph
 tasks.use(express.json());
 graphs.use(express.json());
+graph.use(express.json());
 
 // sends save data to db
 tasks.post("/", async (request, response) => {
@@ -36,6 +38,7 @@ graphs.get("/", async (request, response) => {
 
 app.use("/api/tasks", tasks);
 app.use("/api/graphs", graphs);
+app.use("/api/graph", graph);
 
 process.env?.SERVE_REACT?.toLowerCase() === "true" &&
   app.use(

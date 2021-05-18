@@ -34,7 +34,7 @@ const LoadScreen = ({ graphInfo }) => {
         </thead>
         <tbody>
           {graphInfo.map((info) => (
-            <tr>
+            <tr key={info.id}>
               <td>{info.id}</td>
               <td>{info.graph}</td>
               {/* <td>{info.user}</td> */}

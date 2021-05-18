@@ -238,13 +238,19 @@ const App = () => {
       setGraphInfo(await apiClient.getGraphs());
       console.log(graphInfo);
     } catch (error) {
-      console.error("cannot GET graphInfo");
+      setGraphInfo([
+        { id: 1, graph: "Birthday Party" },
+        { id: 2, graph: "I like cats" },
+        { id: 3, graph: "I like cats2" },
+        { id: 4, graph: "convince parents to let me get a cat" },
+      ]);
+      console.warn("using dummy graphData");
     }
   };
 
-  React.useEffect(() => {
-    getGraphInfo();
-  }, []);
+  // React.useEffect(() => {
+  //   getGraphInfo();
+  // }, []);
 
   // const loadTasks = async () => setTasks(await apiClient.getTasks());
 

@@ -21,7 +21,7 @@ export const getGraphs = async () => {
   const response = await fetch("/api/graphs");
   // console.log(response.json());
   return response.json();
-  // return { response: "pong" };
+  // return { response: ["pong"] };
 };
 
 export const getImage = async () => {
