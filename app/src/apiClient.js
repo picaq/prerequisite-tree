@@ -17,9 +17,17 @@ export const addTask = async (saveData) => {
   // return response.json();
 };
 
+// load all graph info to load screen
 export const getGraphs = async () => {
   const response = await fetch("/api/graphs");
   // console.log(response.json());
+  return response.json();
+  // return { response: ["pong"] };
+};
+
+// load a single graph coordinates to svg
+export const getGraph = async () => {
+  const response = await fetch("/graph/:id");
   return response.json();
   // return { response: ["pong"] };
 };

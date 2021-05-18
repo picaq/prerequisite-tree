@@ -36,9 +36,17 @@ graphs.get("/", async (request, response) => {
   response.json(graphs);
 });
 
+// load single graph coordinates from db
+graph.get("/:id", async (request, response) => {
+  const { id } = request.params;
+  const graphData = await db.getGraph(id);
+  response.json(graphData);
+  // response.status(200).json({ didNotGet: "graphData" });
+});
+
 app.use("/api/tasks", tasks);
 app.use("/api/graphs", graphs);
-app.use("/api/graph", graph);
+app.use("/graph", graph);
 
 process.env?.SERVE_REACT?.toLowerCase() === "true" &&
   app.use(

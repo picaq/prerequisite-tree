@@ -252,6 +252,17 @@ const App = () => {
   //   getGraphInfo();
   // }, []);
 
+  // loading graph nodes and links from db
+
+  const getGraphData = async () => {
+    try {
+      graphData = await apiClient.getGraphs();
+      console.log(graphData);
+    } catch (error) {
+      console.error("failed to GET graphData");
+    }
+  };
+
   // const loadTasks = async () => setTasks(await apiClient.getTasks());
 
   // React.useEffect(() => {
