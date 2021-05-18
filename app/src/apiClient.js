@@ -1,9 +1,9 @@
 import dotenv from "dotenv";
 
-export const getTasks = async () => {
-  const response = await fetch("/api/tasks");
-  return response.json();
-};
+// export const getTasks = async () => {
+//   const response = await fetch("/api/tasks");
+//   return response.json();
+// };
 
 export const addTask = async (saveData) => {
   const response = await fetch("/api/tasks", {
@@ -39,5 +39,15 @@ export const getImage = async () => {
     },
   );
   // console.log(process.env.NASA_API_KEY);
+  return response.json();
+};
+
+export const getTasks = async () => {
+  const response = await fetch("/api/tasks");
+  return response.json();
+};
+
+export const getGraphs = async () => {
+  const response = await fetch("/api/graphs");
   return response.json();
 };
