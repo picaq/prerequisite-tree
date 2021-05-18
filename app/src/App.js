@@ -6,6 +6,7 @@ import * as apiClient from "./apiClient";
 import "./App.css";
 
 import BarChart from "./components/BarChart";
+import Load from "./components/LoadScreen";
 import Tree from "./components/Tree";
 
 // import dotenv from "dotenv";
@@ -244,6 +245,29 @@ const App = () => {
     }
   };
 
+  const [graphInfo, setGraphInfo] = React.useState([]);
+
+  const getGraphInfo = async () => {
+    try {
+      const response = async () => setGraphInfo(await apiClient.getGraphs());
+      const jsonData = await response.json();
+      setGraphInfo(jsonData);
+      console.log(jsonData);
+    } catch (error) {
+      console.error("cannot get graphInfo");
+    }
+  };
+
+  React.useEffect(() => {
+    getGraphInfo();
+  }, []);
+
+  // const loadTasks = async () => setTasks(await apiClient.getTasks());
+
+  // React.useEffect(() => {
+  //   onLoad();
+  // }, []);
+
   return (
     <>
       <header>
@@ -348,11 +372,15 @@ const App = () => {
             placeholder="name me to save me"
           ></input>
           <button onClick={onSave}> save </button>
-          <button> load </button>
-          <button onClick={clear}>new graph</button>
+          <button onClick={getGraphInfo}> load </button>
+          <button onClick={clear}> new graph </button>
         </form>
         {/* variable={data} */}
         <Tree nodes={tasksx} links={arrows} image={image} />
+        <Load
+          // graphName={graphName} userName={userName} timestamp={timestamp}
+          graphInfo={graphInfo}
+        />
       </main>
     </>
   );
