@@ -25,7 +25,12 @@ const LoadScreen = ({ graphInfo, nodes, links }) => {
   const getGraphData = async (id) => {
     try {
       const graphData = await apiClient.getGraph(id);
-      console.log(graphData);
+      graphObj = graphData[0];
+      // console.log(graphData);
+      setGraph(graphObj.graph);
+      setTasks(graphObj.nodes);
+      setArrows(graphObj.links);
+      console.log(graphObj);
     } catch (error) {
       console.error("cannot GET graphData");
     }
