@@ -378,6 +378,8 @@ const App = () => {
         <Tree nodes={tasksx} links={arrows} image={image} />
         <Load
           // graphName={graphName} userName={userName} timestamp={timestamp}
+          nodes={tasksx}
+          links={arrows}
           graphInfo={graphInfo}
         />
       </main>

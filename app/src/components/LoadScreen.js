@@ -1,8 +1,10 @@
 import React from "react";
 
+import * as apiClient from "./../apiClient";
+
 // passing in
 
-const LoadScreen = ({ graphInfo }) => {
+const LoadScreen = ({ graphInfo, nodes, links }) => {
   // const [graphInfo, setGraphInfo] = React.useState([]);
 
   // const getGraphInfo = async () => {
@@ -20,6 +22,15 @@ const LoadScreen = ({ graphInfo }) => {
   //   getGraphInfo();
   // }, []);
 
+  const getGraphData = async (id) => {
+    try {
+      const graphData = await apiClient.getGraph(id);
+      console.log(graphData);
+    } catch (error) {
+      console.error("cannot GET graphData");
+    }
+  };
+
   return (
     <section>
       <h2>Load Screen</h2>
@@ -36,7 +47,11 @@ const LoadScreen = ({ graphInfo }) => {
           {graphInfo.map((info) => (
             <tr key={info.id}>
               <td>{info.id}</td>
-              <td>{info.graph}</td>
+              <td>
+                <button onClick={() => getGraphData(info.id)}>
+                  {info.graph}
+                </button>
+              </td>
               {/* <td>{info.user}</td> */}
               {/* <td>{info.timestamp}</td> */}
             </tr>

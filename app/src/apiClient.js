@@ -19,8 +19,8 @@ export const getGraphs = async () => {
 };
 
 // load a single graph coordinates to svg
-export const getGraph = async () => {
-  const response = await fetch("/graph/:id");
+export const getGraph = async (id) => {
+  const response = await fetch(`/graph/${id}`);
   return response.json();
   // return { response: ["pong"] };
 };
