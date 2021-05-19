@@ -51,7 +51,7 @@ jobs:
           HEROKU_API_TOKEN: ${{ secrets.HEROKU_API_KEY }}
           HEROKU_APP_NAME: ${{ secrets.HEROKU_APP_NAME }}
           NASA_API_KEY: ${{ secrets.NASA_API_KEY }}
-          REACT_NASA_API_KEY: ${{ secrets.REACT_APP_NASA_API_KEY }}
+          REACT_APP_NASA_API_KEY: ${{ secrets.REACT_APP_NASA_API_KEY }}
         # run: >-
         #   git push -f https://heroku:${HEROKU_API_TOKEN}@git.heroku.com/${HEROKU_APP_NAME}.git
         #   ${GITHUB_REF##*/}:main
