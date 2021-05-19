@@ -1,17 +1,16 @@
 import * as React from "react";
 
 import * as apiClient from "./apiClient";
-// import { useD3 } from "./hooks/useD3";
+import BarChart from "./components/BarChart";
+import Load from "./components/LoadScreen";
+import Tree from "./components/Tree";
 
 import "./App.css";
 
-import BarChart from "./components/BarChart";
-import Tree from "./components/Tree";
-
 // import dotenv from "dotenv";
 
-console.log(process.env.REACT_APP_NASA_API_KEY);
-console.log(process.env.NASA_API_KEY);
+// console.log(process.env.REACT_APP_NASA_API_KEY);
+// console.log(process.env.NASA_API_KEY);
 
 const App = () => {
   // const [tasks, setTasks] = React.useState([]);
@@ -25,25 +24,9 @@ const App = () => {
   const [image, setImage] = React.useState([""]);
   // const loadImg = async () => setTasks(await apiClient.getTasks());
   const loadImage = async () => {
-    // dotenv.config({ path: "../../.env" });
-    // console.log(process.env.REACT_APP_NASA_API_KEY);
     try {
-      // const response = await fetch(
-      //   "https://api.nasa.gov/planetary/apod?api_key=DEMO_KEY",
-      //   {
-      //     headers: {
-      //       "Access-Control-Allow-Origin": "*",
-      //       "Access-Control-Allow-Methods": "GET,POST,PUT,DELETE,OPTIONS",
-      //       "Access-Control-Allow-Headers":
-      //         "Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With",
-      //     },
-      //   },
-      // );
-      // const jsonData = await response.json();
       setImage(await apiClient.getImage());
-      // setColor(Math.floor(361* Math.random()));
-      // setImage(jsonData);
-      // console.log(color, jsonData);
+
       console.log("NASA API key being used");
     } catch (error) {
       console.warn("warning: DEMO_KEY being used");
@@ -60,8 +43,8 @@ const App = () => {
           },
         },
       );
-      const jsonData = await response.json();
-      setImage(jsonData);
+      // const jsonData = await response.json();
+      // setImage(jsonData);
     }
   };
 
@@ -231,6 +214,7 @@ const App = () => {
 
   const [graph, setGraph] = React.useState("Birthday Party");
 
+  // saving to db
   const onSave = async (e) => {
     let nodes = tasksx,
       links = arrows;
@@ -244,10 +228,49 @@ const App = () => {
     }
   };
 
+  // loading list from db
+  const [graphInfo, setGraphInfo] = React.useState([]);
+
+  const getGraphInfo = async () => {
+    try {
+      setGraphInfo(await apiClient.getGraphs());
+      console.log(graphInfo);
+    } catch (error) {
+      setGraphInfo([
+        { id: 1, graph: "Birthday Party" },
+        { id: 2, graph: "I like cats" },
+        { id: 3, graph: "I like cats2" },
+        { id: 4, graph: "convince parents to let me get a cat" },
+      ]);
+      console.warn("using dummy graphData");
+    }
+  };
+
+  // React.useEffect(() => {
+  //   getGraphInfo();
+  // }, []);
+
+  // loading graph nodes and links from db
+
+  const getGraphData = async () => {
+    try {
+      const graphData = await apiClient.getGraphs();
+      console.log(graphData);
+    } catch (error) {
+      console.error("failed to GET graphData");
+    }
+  };
+
+  // const loadTasks = async () => setTasks(await apiClient.getTasks());
+
+  // React.useEffect(() => {
+  //   onLoad();
+  // }, []);
+
   return (
     <>
       <header>
-        <h1>Prerequisite Tree</h1>
+        <h1>Prerequisite Tree deployyy</h1>
       </header>
 
       <main
@@ -348,11 +371,15 @@ const App = () => {
             placeholder="name me to save me"
           ></input>
           <button onClick={onSave}> save </button>
-          <button> load </button>
-          <button onClick={clear}>new graph</button>
+          <button onClick={getGraphInfo}> load </button>
+          <button onClick={clear}> new graph </button>
         </form>
         {/* variable={data} */}
         <Tree nodes={tasksx} links={arrows} image={image} />
+        <Load
+          // graphName={graphName} userName={userName} timestamp={timestamp}
+          graphInfo={graphInfo}
+        />
       </main>
     </>
   );
