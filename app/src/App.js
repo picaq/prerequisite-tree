@@ -1,13 +1,11 @@
 import * as React from "react";
 
 import * as apiClient from "./apiClient";
-// import { useD3 } from "./hooks/useD3";
-
-import "./App.css";
-
 import BarChart from "./components/BarChart";
 import Load from "./components/LoadScreen";
 import Tree from "./components/Tree";
+
+import "./App.css";
 
 // import dotenv from "dotenv";
 
@@ -256,7 +254,7 @@ const App = () => {
 
   const getGraphData = async () => {
     try {
-      graphData = await apiClient.getGraphs();
+      const graphData = await apiClient.getGraphs();
       console.log(graphData);
     } catch (error) {
       console.error("failed to GET graphData");
