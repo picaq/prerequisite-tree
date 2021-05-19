@@ -27,7 +27,7 @@
       "last 1 safari version"
     ]
   },
-  "proxy": "http://localhost:4000/",
+  "proxy": "http://prerequisite.herokuapp.com",
   "dependencies": {
     "d3": "^6.7.0",
     "react": "^17.0.1",
