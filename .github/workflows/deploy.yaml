@@ -46,6 +46,7 @@ jobs:
           usedocker: true
           docker_build_args:
             REACT_APP_NASA_API_KEY
+            NASA_API_KEY
       # - name: Deploy to Heroku
         env:
           HEROKU_API_TOKEN: ${{ secrets.HEROKU_API_KEY }}
