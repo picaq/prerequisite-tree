@@ -215,11 +215,11 @@ const App = () => {
   const [graph, setGraph] = React.useState("Birthday Party");
 
   // saving to db
-  const onSave = async (e) => {
+  const onSave = async () => {
     let nodes = tasksx,
       links = arrows;
     let saveData = { graph, nodes, links };
-    e.preventDefault(); // prevents refreshing
+    // e.preventDefault(); // prevents refreshing
     let canAdd = saveData.nodes.length > 0 && graph.length > 0;
     if (canAdd) {
       await apiClient.addTask(saveData);
