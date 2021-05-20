@@ -264,9 +264,7 @@ const App = () => {
         <h1>Prerequisite Tree deployyy 2</h1>
       </header>
 
-      <main
-        className="App"
-      >
+      <main className="App">
         <h2>Add Task</h2>
         <form
           onSubmit={(e) => {
