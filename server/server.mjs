@@ -39,6 +39,8 @@ graphs.get("/", async (request, response) => {
 // load single graph coordinates from db
 graph.get("/:id", async (request, response) => {
   const { id } = request.params;
+  console.log(id);
+  // const { id } = request.query;
   const graphData = await db.getGraph(id);
   response.json(graphData);
   // response.status(200).json({ didNotGet: "graphData" });

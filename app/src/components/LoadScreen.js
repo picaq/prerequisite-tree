@@ -4,7 +4,7 @@ import * as apiClient from "./../apiClient";
 
 // passing in
 
-const LoadScreen = ({ graphInfo, setGraph, setTasks, setArrows }) => {
+const LoadScreen = ({ graphInfo, setGraph, setTasks, setArrows, clear }) => {
   // const [graphInfo, setGraphInfo] = React.useState([]);
 
   // const getGraphInfo = async () => {
@@ -28,6 +28,7 @@ const LoadScreen = ({ graphInfo, setGraph, setTasks, setArrows }) => {
       let graphObj = graphData[0];
       // console.log(graphData);
       console.log(graphObj);
+      clear();
       setGraph(graphObj.graph);
       setTasks(graphObj.nodes);
       setArrows(graphObj.links);

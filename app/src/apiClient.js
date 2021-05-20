@@ -20,26 +20,30 @@ export const getGraphs = async () => {
 
 // load a single graph coordinates to svg
 export const getGraph = async (id) => {
-  const response = await fetch(`/graph/${id}`);
+  const response = await fetch(("/graph/"+id));
+  // `/api/user/?email=${encodeURIComponent(email)}`
   return response.json();
   // return { response: ["pong"] };
 };
 
+const KEY = process.env.REACT_APP_NASA_API_KEY
+
 export const getImage = async () => {
+  
   const response = await fetch(
     `https://api.nasa.gov/planetary/apod?api_key=${
-      process.env.REACT_APP_NASA_API_KEY
-        ? process.env.REACT_APP_NASA_API_KEY
+      KEY
+        ? KEY
         : "DEMO_KEY"
     }`,
-    {
-      headers: {
-        "Access-Control-Allow-Origin": "*",
-        "Access-Control-Allow-Methods": "GET,POST,PUT,DELETE,OPTIONS",
-        "Access-Control-Allow-Headers":
-          "Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With",
-      },
-    },
+    // {
+    //   headers: {
+    //     "Access-Control-Allow-Origin": "*",
+    //     "Access-Control-Allow-Methods": "GET,POST,PUT,DELETE,OPTIONS",
+    //     "Access-Control-Allow-Headers":
+    //       "Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With",
+    //   },
+    // },
   );
   // console.log(process.env.NASA_API_KEY);
   return response.json();

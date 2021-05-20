@@ -233,7 +233,9 @@ const App = () => {
 
   const getGraphInfo = async () => {
     try {
-      setGraphInfo(await apiClient.getGraphs());
+      let list = await apiClient.getGraphs();
+      // setGraphInfo(await apiClient.getGraphs());
+      setGraphInfo(list);
       console.log(graphInfo);
     } catch (error) {
       setGraphInfo([
@@ -246,12 +248,7 @@ const App = () => {
     }
   };
 
-  // React.useEffect(() => {
-  //   getGraphInfo();
-  // }, []);
-
   // loading graph nodes and links from db
-
   const getGraphData = async () => {
     try {
       const graphData = await apiClient.getGraphs();
@@ -261,12 +258,6 @@ const App = () => {
     }
   };
 
-  // const loadTasks = async () => setTasks(await apiClient.getTasks());
-
-  // React.useEffect(() => {
-  //   onLoad();
-  // }, []);
-
   return (
     <>
       <header>
@@ -275,10 +266,6 @@ const App = () => {
 
       <main
         className="App"
-        // style={{
-        //   backgroundImage: `url(${image.hdurl})`,
-        //   backgroundSize: "cover",
-        // }}
       >
         <h2>Add Task</h2>
         <form
@@ -370,55 +357,22 @@ const App = () => {
             onChange={(e) => setGraph(e.target.value)}
             placeholder="name me to save me"
           ></input>
-          <button onClick={onSave}> save </button>
-          <button onClick={getGraphInfo}> load </button>
-          <button onClick={clear}> new graph </button>
+          <button onClick={() => onSave()}> save </button>
+          <button onClick={() => getGraphInfo()}> load </button>
+          <button onClick={() => clear()}> new graph </button>
         </form>
-        {/* variable={data} */}
         <Tree nodes={tasksx} links={arrows} image={image} />
         <Load
           // graphName={graphName} userName={userName} timestamp={timestamp}
           setGraph={setGraph}
           setArrows={setArrows}
           setTasks={setTasks}
+          clear={() => clear()}
           graphInfo={graphInfo}
         />
       </main>
     </>
   );
 };
-
-// const TaskList = ({ tasks }) => (
-//   <ul>
-//     {tasks.map(({ id, name }) => (
-//       <li key={id}>{name}</li>
-//     ))}
-//   </ul>
-// );
-
-// const AddTask = ({ loadTasks }) => {
-//   const [task, setTask] = React.useState("");
-
-//   const canAdd = task !== "";
-
-//   const onSubmit = async (e) => {
-//     e.preventDefault();
-//     if (canAdd) {
-//       await apiClient.addTask(task);
-//       loadTasks();
-//       setTask("");
-//     }
-//   };
-
-//   return (
-//     <form onSubmit={onSubmit}>
-//       <label>
-//         New task:{" "}
-//         <input onChange={(e) => setTask(e.currentTarget.value)} value={task} />
-//       </label>
-//       <button disabled={!canAdd}>Add</button>
-//     </form>
-//   );
-// };
 
 export default App;
