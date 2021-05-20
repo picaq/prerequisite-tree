@@ -7,7 +7,7 @@ export const getGraphs = async () =>
   await db.any("SELECT id, graph FROM tasks");
 
 export const getGraph = async (id) =>
-  await db.any("SELECT graph, nodes, links FROM tasks WHERE id=$1;", [id]);
+  await db.any("SELECT graph, nodes, links FROM tasks WHERE id=$1", [id]);
 
 // original
 // export const addTask = async (name) =>
@@ -19,7 +19,7 @@ export const getGraph = async (id) =>
 
 export const addTask = async (graph, nodes, links) =>
   await db.any(
-    "INSERT INTO tasks(graph, nodes, links) VALUES($1, $2:json, $3:json);",
+    "INSERT INTO tasks(graph, nodes, links) VALUES($1, $2:json, $3:json)",
     [graph, nodes, links],
   );
 
