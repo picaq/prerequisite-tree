@@ -4,7 +4,7 @@ import * as apiClient from "./../apiClient";
 
 // passing in
 
-const LoadScreen = ({ graphInfo, nodes, links }) => {
+const LoadScreen = ({ graphInfo, setGraph, setTasks, setArrows }) => {
   // const [graphInfo, setGraphInfo] = React.useState([]);
 
   // const getGraphInfo = async () => {
@@ -25,14 +25,14 @@ const LoadScreen = ({ graphInfo, nodes, links }) => {
   const getGraphData = async (id) => {
     try {
       const graphData = await apiClient.getGraph(id);
-      graphObj = graphData[0];
+      let graphObj = graphData[0];
       // console.log(graphData);
-      // setGraph(graphObj.graph);
-      // setTasks(graphObj.nodes);
-      // setArrows(graphObj.links);
       console.log(graphObj);
+      setGraph(graphObj.graph);
+      setTasks(graphObj.nodes);
+      setArrows(graphObj.links);
     } catch (error) {
-      console.error("cannot GET graphData");
+      // console.error("cannot GET graphData");
     }
   };
 
