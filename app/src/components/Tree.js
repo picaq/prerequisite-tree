@@ -82,23 +82,25 @@ function Tree({ links, nodes, image }) {
         // style={{width: "100%", height: "100%"}}
         style={{ overflow: "visible" }}
       >
-        <image
-          style={{
-            backgroundImage: `url(${image.hdurl})`,
-            // backgroundColor: "pink",
-            backgroundSize: "cover",
-            opacity: ".32",
-            overflow: "visible",
-            enableBackground: "new",
-            transform: `translateY(calc(-66vh + 66vmin)) translateX(calc(-55vw + 55vmin))`,
-            position: "absolute",
-            top: 0,
-          }}
-          // width={window.innerWidth}
-          // width="100%"
-          // height={window.innerHeight}
-          href={image.hdurl}
-        ></image>
+        {image?.hdurl ? (
+          <image
+            style={{
+              backgroundImage: `url(${image.hdurl})`,
+              // backgroundColor: "pink",
+              backgroundSize: "cover",
+              opacity: ".32",
+              overflow: "visible",
+              enableBackground: "new",
+              transform: `translateY(calc(-66vh + 66vmin)) translateX(calc(-55vw + 55vmin))`,
+              position: "absolute",
+              top: 0,
+            }}
+            // width={window.innerWidth}
+            // width="100%"
+            // height={window.innerHeight}
+            href={image.hdurl}
+          ></image>
+        ) : null}
         <defs>
           <marker
             id="triangle"
