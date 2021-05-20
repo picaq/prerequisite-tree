@@ -1,7 +1,7 @@
 import * as React from "react";
 
 import * as apiClient from "./apiClient";
-import BarChart from "./components/BarChart";
+// import BarChart from "./components/BarChart";
 import Load from "./components/LoadScreen";
 import Tree from "./components/Tree";
 
@@ -216,8 +216,8 @@ const App = () => {
 
   // saving to db
   const onSave = async () => {
-    let nodes = tasksx,
-      links = arrows;
+    let nodes = tasksx.map(node => ({key: node.key, name: node.name})),
+      links = arrows.map(node => ({source: node.source.key, target: node.target.key}));
     let saveData = { graph, nodes, links };
     // e.preventDefault(); // prevents refreshing
     let canAdd = saveData.nodes.length > 0 && graph.length > 0;
@@ -264,7 +264,9 @@ const App = () => {
         <h1>Prerequisite Tree deployyy 2</h1>
       </header>
 
-      <main className="App">
+      <main
+        className="App"
+      >
         <h2>Add Task</h2>
         <form
           onSubmit={(e) => {
