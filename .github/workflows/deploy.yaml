@@ -1,49 +1,48 @@
 name: Deploy to Heroku
 
-on:
-  # pull_request: 
-  push:
-    branches:
-      - main
-      - "**"
-  workflow_dispatch:
-jobs:
-  deploy:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v2
-        with:
-          fetch-depth: 0
-      - name: Deploy to Heroku
-        env:
-          HEROKU_API_TOKEN: ${{ secrets.HEROKU_API_KEY }}
-          HEROKU_APP_NAME: ${{ secrets.HEROKU_APP_NAME }}
-        run: >-
-          if [ ${GITHUB_EVENT_NAME} == "pull_request" ]; then
-            GITHUB_SHA=${{ github.event.pull_request.head.sha }}
-          fi
-          git push -f https://heroku:${HEROKU_API_TOKEN}@git.heroku.com/${HEROKU_APP_NAME}.git
-          origin/main:main
-          ${GITHUB_SHA}:main
-
 # on:
+#   pull_request:
 #   push:
+#     branches:
+#       - main
 #   workflow_dispatch:
-
 # jobs:
 #   deploy:
 #     runs-on: ubuntu-latest
 #     steps:
 #       - uses: actions/checkout@v2
-#       - uses: akhileshns/heroku-deploy@v3.12.12
 #         with:
-#           # fetch-depth: 0
-#           heroku_api_key: ${{ secrets.HEROKU_API_KEY }}
-#           heroku_app_name: ${{ secrets.HEROKU_APP_NAME }}
-#           heroku_email: ${{ secrets.HEROKU_EMAIL }}
-#           usedocker: true
-#           docker_build_args:
-#             REACT_APP_NASA_API_KEY
-#       # - name: Deploy to Heroku
+#           fetch-depth: 0
+#       - name: Deploy to Heroku
 #         env:
-#           REACT_APP_NASA_API_KEY: ${{ secrets.REACT_APP_NASA_API_KEY }}
+#           HEROKU_API_TOKEN: ${{ secrets.HEROKU_API_KEY }}
+#           HEROKU_APP_NAME: ${{ secrets.HEROKU_APP_NAME }}
+#         run: >-
+#           if [ ${GITHUB_EVENT_NAME} == "pull_request" ]; then
+#             GITHUB_SHA=${{ github.event.pull_request.head.sha }}
+#           fi
+#           git push -f https://heroku:${HEROKU_API_TOKEN}@git.heroku.com/${HEROKU_APP_NAME}.git
+#           origin/main:main
+#           ${GITHUB_SHA}:main
+
+on:
+  push:
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: akhileshns/heroku-deploy@v3.12.12
+        with:
+          # fetch-depth: 0
+          heroku_api_key: ${{ secrets.HEROKU_API_KEY }}
+          heroku_app_name: ${{ secrets.HEROKU_APP_NAME }}
+          heroku_email: ${{ secrets.HEROKU_EMAIL }}
+          usedocker: true
+          docker_build_args:
+            REACT_APP_NASA_API_KEY
+      # - name: Deploy to Heroku
+        env:
+          REACT_APP_NASA_API_KEY: ${{ secrets.REACT_APP_NASA_API_KEY }}
