@@ -74,6 +74,7 @@ function Tree({ links, nodes, image }) {
   return (
     <div className="svg-container" style={{ overflow: "visible" }}>
       <svg
+        data-testid="tree-1"
         version="1.1"
         viewBox="0 0 600 600"
         preserveAspectRatio="xMinYMin meet"
