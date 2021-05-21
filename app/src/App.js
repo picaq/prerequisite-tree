@@ -363,6 +363,7 @@ const App = () => {
           <button onClick={() => clear()}> new graph </button>
         </form>
         <Tree nodes={tasksx} links={arrows} image={image} />
+        
         <LoadScreen
           // graphName={graphName} userName={userName} timestamp={timestamp}
           setGraph={setGraph}
@@ -371,6 +372,9 @@ const App = () => {
           clear={() => clear()}
           graphInfo={graphInfo}
         />
+        <footer>
+        <p>NASA Image: <em><a href="https://apod.nasa.gov/apod/astropix.html" target="_blank">{image.title}</a></em> for { new Date(image.date).toDateString() }</p>
+        </footer>
       </main>
     </>
   );
