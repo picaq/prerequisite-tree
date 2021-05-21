@@ -3,12 +3,15 @@
   --body-text: "Open Sans", Helvetica, Arial, sans-serif;
 }
 
-
 html {
   /* background: #171717; */
   background: #131313;
   color: #ddd;
   font-family: var(--body-text);
+}
+
+body {
+  padding: 0 1rem;
 }
 
 h1,
@@ -66,13 +69,13 @@ text {
   left: 0;
 }
 
-
 footer {
   position: fixed;
-  bottom:0; right:0;
+  bottom: 0;
+  right: 0;
   margin-right: 1em;
   margin-left: 1em;
-  opacity: .9
+  opacity: 0.9;
 }
 
 a {
@@ -81,21 +84,24 @@ a {
   font-weight: 500;
 }
 
-button, input {
-    font-family: var(--body-text);
+button,
+input {
+  font-family: var(--body-text);
 }
 
-tr, a, button {
-  transition: color .12s ease;
+tr,
+a,
+button {
+  transition: color 0.12s ease;
 }
 
-tbody tr:hover, a:hover, button:hover {
+tbody tr:hover,
+a:hover,
+button:hover {
   color: var(--hover-color);
 }
 
-
-
 td:first-child {
   text-align: right;
-  padding-right: .33em;
+  padding-right: 0.33em;
 }
