@@ -9,8 +9,8 @@ function Tree({ links, nodes, image }) {
   console.log(image.hdurl);
   // pink curlies = don’t worry about order of passing in
   const ref = useD3((svg) => {
-    const height = 500;
-    const width = 500;
+    // const height = 500;
+    // const width = 500;
     const boxHeight = 600;
     const boxWidth = 600;
     // const margin = { top: 20, right: 30, bottom: 30, left: 40 };
@@ -91,7 +91,7 @@ function Tree({ links, nodes, image }) {
               opacity: ".32",
               overflow: "visible",
               enableBackground: "new",
-              transform: `translateY(calc(-66vh + 66vmin)) translateX(calc(-55vw + 55vmin))`,
+              transform: `translateY(calc(-97vh + 97vmin)) translateX(calc(-55vw + 55vmin))`,
               position: "absolute",
               top: 0,
             }}
