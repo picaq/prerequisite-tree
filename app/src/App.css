@@ -77,6 +77,11 @@ footer {
   margin-left: 1em;
   opacity: 0.9;
   text-align: right;
+  transition: opacity 0.12s ease;
+}
+
+footer:hover {
+  opacity: 0.96;
 }
 
 a {
