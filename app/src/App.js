@@ -2,7 +2,7 @@ import * as React from "react";
 
 import * as apiClient from "./apiClient";
 // import BarChart from "./components/BarChart";
-import Load from "./components/LoadScreen";
+import LoadScreen from "./components/LoadScreen";
 import Tree from "./components/Tree";
 
 import "./App.css";
@@ -363,7 +363,7 @@ const App = () => {
           <button onClick={() => clear()}> new graph </button>
         </form>
         <Tree nodes={tasksx} links={arrows} image={image} />
-        <Load
+        <LoadScreen
           // graphName={graphName} userName={userName} timestamp={timestamp}
           setGraph={setGraph}
           setArrows={setArrows}
