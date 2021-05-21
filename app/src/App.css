@@ -77,14 +77,22 @@ footer {
 
 a {
   color: #b4cfff;
-  transition: color .12s ease;
   text-decoration: none;
   font-weight: 500;
 }
 
-a:hover {
-  color: #a1d6f1;
+button, input {
+    font-family: var(--body-text);
 }
+
+tr, a, button {
+  transition: color .12s ease;
+}
+
+tbody tr:hover, a:hover, button:hover {
+  color: var(--hover-color);
+}
+
 
 
 td:first-child {
