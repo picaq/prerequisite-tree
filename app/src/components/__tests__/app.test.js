@@ -7,6 +7,10 @@ import App from "../../App";
 //   expect(true).toBe(true);
 // });
 
+afterEach(() => {
+  cleanup();
+});
+
 test("should render Add Task form", () => {
   render(<App />);
   const taskForm = screen.getByTestId("app-1");
