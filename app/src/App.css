@@ -64,4 +64,16 @@ footer {
   bottom:0; right:0;
   margin-right: 1em;
   margin-left: 1em;
+  opacity: .9
+}
+
+a {
+  color: #b4cfff;
+  transition: color .12s ease;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+a:hover {
+  color: #a1d6f1;
 }
