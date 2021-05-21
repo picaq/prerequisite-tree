@@ -1,8 +1,14 @@
+:root {
+  --hover-color: #a1d6f1;
+  --body-text: "Open Sans", Helvetica, Arial, sans-serif;
+}
+
+
 html {
   /* background: #171717; */
   background: #131313;
   color: #ddd;
-  font-family: "Open Sans";
+  font-family: var(--body-text);
 }
 
 h1,
@@ -30,7 +36,7 @@ line {
 }
 text {
   text-anchor: middle;
-  font-family: "Helvetica Neue", Helvetica, sans-serif;
+  font-family: var(--body-text);
   fill: #ccc;
   font-size: 0.8rem;
 }
@@ -78,4 +84,10 @@ a {
 
 a:hover {
   color: #a1d6f1;
+}
+
+
+td:first-child {
+  text-align: right;
+  padding-right: .33em;
 }
