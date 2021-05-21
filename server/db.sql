@@ -1,29 +1,9 @@
--- test sql queries: does not work
-INSERT INTO tasks(graph, nodes, links)
-     VALUES ('OG Birthday Party',
-        '
-    { "key": 0, "name": "Birthday Party" },
-
-    { "key": 1, "name": "activities" },
-    { "key": 2, "name": "party favors" },
-    { "key": 3, "name": "cake" },
-    { "key": 4, "name": "catering" },
-    { "key": 5, "name": "venue" },
-    { "key": 6, "name": "decorations" },
-
-    { "key": 7, "name": "board games" },
-    { "key": 8, "name": "video games" },
-
-    { "key": 9, "name": "go to party store" },
-
-    { "key": 10, "name": "RSVPs" },
-
-    { "key": 11, "name": "balloons" },
-    { "key": 12, "name": "go to bakery" },
-    { "key": 13, "name": "send invitations" },
-    { "key": 14, "name": "make invitations" },
-  :json',
-  '
+-- test sql queries: Typecasting into json
+-- no trailing commas
+-- ::json outside of quotes!
+INSERT INTO tasks (links)
+     VALUES (
+  '[
     { "source": 0, "target": 0 },
     { "source": 1, "target": 0 },
     { "source": 2, "target": 0 },
@@ -43,6 +23,7 @@ INSERT INTO tasks(graph, nodes, links)
     { "source": 12, "target": 3 },
     { "source": 12, "target": 3 },
     { "source": 13, "target": 10 },
-    { "source": 14, "target": 13 },
-  :json'
+    { "source": 14, "target": 13 }
+    ]'
+  ::json
      );
