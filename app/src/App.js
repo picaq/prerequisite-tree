@@ -4,7 +4,7 @@ import * as apiClient from "./apiClient";
 // import BarChart from "./components/BarChart";
 import LoadScreen from "./components/LoadScreen";
 import Tree from "./components/Tree";
-
+import "./normalize.css";
 import "./App.css";
 
 // import dotenv from "dotenv";
@@ -264,7 +264,7 @@ const App = () => {
   return (
     <>
       <header>
-        <h1>Prerequisite Tree deployyy 2</h1>
+        <h1>Prerequisite Tree</h1>
       </header>
 
       <main className="App">
@@ -363,7 +363,7 @@ const App = () => {
           <button onClick={() => clear()}> new graph </button>
         </form>
         <Tree nodes={tasksx} links={arrows} image={image} />
-        
+
         <LoadScreen
           // graphName={graphName} userName={userName} timestamp={timestamp}
           setGraph={setGraph}
@@ -373,7 +373,19 @@ const App = () => {
           graphInfo={graphInfo}
         />
         <footer>
-        <p>NASA Image: <em><a href="https://apod.nasa.gov/apod/astropix.html" target="_blank">{image.title}</a></em> for { new Date(image.date).toDateString() }</p>
+          <p>
+            NASA Image:{" "}
+            <em>
+              <a
+                href="https://apod.nasa.gov/apod/astropix.html"
+                target="_blank"
+                rel="noreferrer"
+              >
+                {image.title}
+              </a>
+            </em>{" "}
+            for {new Date(image.date).toDateString()}
+          </p>
         </footer>
       </main>
     </>
