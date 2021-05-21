@@ -270,6 +270,7 @@ const App = () => {
       <main className="App">
         <h2>Add Task</h2>
         <form
+          data-testid="app-1"
           onSubmit={(e) => {
             e.preventDefault();
             addTasks();
