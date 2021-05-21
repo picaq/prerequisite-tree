@@ -383,8 +383,9 @@ const App = () => {
               >
                 {image.title}
               </a>
-            </em>{" "}
-            for {new Date(image.date).toDateString()}
+            </em>
+            {" "}
+            for {new Date(image.date).toDateString()}
           </p>
         </footer>
       </main>
