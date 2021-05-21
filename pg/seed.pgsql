@@ -26,7 +26,9 @@ SET default_table_access_method = heap;
 
 CREATE TABLE public.tasks (
     id integer NOT NULL,
-    name text
+    graph text,
+    nodes jsonb,
+    links jsonb
 );
 
 
@@ -65,20 +67,20 @@ ALTER TABLE ONLY public.tasks ALTER COLUMN id SET DEFAULT nextval('public.tasks_
 -- Data for Name: tasks; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
-COPY public.tasks (id, name) FROM stdin;
-1	🙏 Be nice when you add test entries
-2	⏲ Added entries will be reset every Sunday
-3	End white supremacy
-4	Advocate for living wage
-5	Provide universal health care
-\.
+-- COPY public.tasks (id, name) FROM stdin;
+-- 1	🙏 Be nice when you add test entries
+-- 2	⏲ Added entries will be reset every Sunday
+-- 3	End white supremacy
+-- 4	Advocate for living wage
+-- 5	Provide universal health care
+-- \.
 
 
 --
 -- Name: tasks_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('public.tasks_id_seq', 3, true);
+SELECT pg_catalog.setval('public.tasks_id_seq', 1, true);
 
 
 --

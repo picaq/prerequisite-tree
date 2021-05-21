@@ -5,7 +5,8 @@ import * as d3 from "d3";
 import { useD3 } from "../hooks/useD3";
 
 // passing in
-function Tree({ links, nodes }) {
+function Tree({ links, nodes, image }) {
+  console.log(image.hdurl);
   // pink curlies = don’t worry about order of passing in
   const ref = useD3((svg) => {
     const height = 500;
@@ -65,13 +66,13 @@ function Tree({ links, nodes }) {
     }
 
     function ticked() {
-      updateLinks();
       updateNodes();
+      updateLinks();
     }
   });
 
   return (
-    <div className="svg-container">
+    <div className="svg-container" style={{ overflow: "visible" }}>
       <svg
         version="1.1"
         viewBox="0 0 600 600"
@@ -79,7 +80,27 @@ function Tree({ links, nodes }) {
         className="svg-content"
         ref={ref}
         // style={{width: "100%", height: "100%"}}
+        style={{ overflow: "visible" }}
       >
+        {image?.hdurl ? (
+          <image
+            style={{
+              backgroundImage: `url(${image.hdurl})`,
+              // backgroundColor: "pink",
+              backgroundSize: "cover",
+              opacity: ".32",
+              overflow: "visible",
+              enableBackground: "new",
+              transform: `translateY(calc(-66vh + 66vmin)) translateX(calc(-55vw + 55vmin))`,
+              position: "absolute",
+              top: 0,
+            }}
+            // width={window.innerWidth}
+            // width="100%"
+            // height={window.innerHeight}
+            href={image.hdurl}
+          ></image>
+        ) : null}
         <defs>
           <marker
             id="triangle"
