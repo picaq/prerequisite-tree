@@ -375,7 +375,7 @@ const App = () => {
         />
         <footer>
           <p>
-            NASA Image:{" "}
+            NASA image of the day:{" "}
             <em>
               <a
                 href="https://apod.nasa.gov/apod/astropix.html"
