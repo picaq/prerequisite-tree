@@ -269,11 +269,21 @@ const App = () => {
   // show/hide edit graph state hooks
   const [edit, setEdit] = React.useState(false);
 
+  // show/hide edit information state hooks
+  const [info, setInfo] = React.useState(false);
+
   return (
     <>
       <header>
         <h1>Prerequisite Tree</h1>
-        <button className="info">
+        <button
+          className="info"
+          onClick={() => {
+            setInfo(true);
+            setLoad(false);
+            setEdit(false);
+          }}
+        >
           <em>?﻿</em>
         </button>
       </header>
@@ -289,6 +299,7 @@ const App = () => {
             onClick={() => {
               setLoad(load ? false : true);
               setEdit(false);
+              setInfo(false);
             }}
           >
             {" "}
@@ -300,6 +311,7 @@ const App = () => {
             onClick={() => {
               setEdit(edit ? false : true);
               setLoad(false);
+              setInfo(false);
             }}
           >
             {" "}
@@ -367,7 +379,7 @@ const App = () => {
           </p>
         </footer>
       </main>
-      <Information />
+      {info ? <Information /> : <></>}
     </>
   );
 };
