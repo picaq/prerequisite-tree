@@ -71,7 +71,7 @@ jobs:
         run: >-
           heroku container:push web
           --app ${{secrets.HEROKU_APP_NAME}}
-          --arg REACT_APP_TITLE="${{secrets.REACT_APP_TITLE}}",REACT_APP_SUBTITLE="${{secrets.REACT_APP_SUBTITLE}}",
+          --arg 
           REACT_APP_NASA_API_KEY="${{ secrets.REACT_APP_NASA_API_KEY }}"
       - name: "Releases the container"
         run: heroku container:release web --app ${{secrets.HEROKU_APP_NAME}}
