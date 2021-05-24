@@ -272,6 +272,9 @@ const App = () => {
     <>
       <header>
         <h1>Prerequisite Tree</h1>
+        <button className="info">
+          <em>?﻿</em>
+        </button>
       </header>
 
       <main className="App">

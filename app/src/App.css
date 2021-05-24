@@ -1,6 +1,7 @@
 :root {
   --hover-color: #a1d6f1;
   --body-text: "Open Sans", Helvetica, Arial, sans-serif;
+  --display-face: "Playfair Display", serif;
 }
 
 html {
@@ -20,7 +21,7 @@ h3,
 h4,
 h5 {
   color: #ccc;
-  font-family: "Playfair Display", serif;
+  font-family: var(--display-face);
 }
 
 input,
@@ -112,4 +113,16 @@ button:hover {
 td:first-child {
   text-align: right;
   padding-right: 0.33em;
+}
+
+.info {
+  font-style: var(--display-face);
+  font-size: 2rem;
+  border-radius: 50%;
+  width: 2.75rem;
+  height: 2.75rem;
+  position: fixed;
+  right: 1rem;
+  top: 1.25rem;
+  letter-spacing: 0.07em;
 }
