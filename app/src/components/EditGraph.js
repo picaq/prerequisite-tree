@@ -96,7 +96,7 @@ const EditGraph = ({
         </datalist>
         <button>add link</button>
       </form>
-      <h2>Options for {graph ? graph : "untitled goal"}</h2>
+      <h2>Name to save {graph ? graph : "New Graph"}</h2>
       <form
         onSubmit={(e) => {
           e.preventDefault();
@@ -109,7 +109,6 @@ const EditGraph = ({
           placeholder="name me to save me"
         ></input>
         <button onClick={() => onSave()}> save </button>
-        <button onClick={() => clear()}> new graph </button>
       </form>
     </section>
   );
