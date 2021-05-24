@@ -110,7 +110,7 @@ const EditGraph = ({
         <button
           onClick={() => onSave()}
           disabled={graph.length > 0 ? null : "disabled"}
-          title={graph.length > 0 ? "must name the graph to save it" : null}
+          // title={graph.length > 0 ? "must name the graph to save it" : null}
         >
           {" "}
           save{" "}
