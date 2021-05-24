@@ -311,7 +311,6 @@ const App = () => {
               setInputTask,
               inputArrow,
               setInputArrow,
-              clear,
               addTasks,
               addLinks,
               onSave,

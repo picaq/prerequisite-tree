@@ -10,7 +10,6 @@ const EditGraph = ({
   setInputTask,
   inputArrow,
   setInputArrow,
-  clear,
   addTasks,
   addLinks,
   onSave,
