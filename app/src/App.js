@@ -265,6 +265,9 @@ const App = () => {
   // show/hide load screen state hooks
   const [load, setLoad] = React.useState(false);
 
+  // show/hide edit graph state hooks
+  const [edit, setEdit] = React.useState(false);
+
   return (
     <>
       <header>
@@ -283,25 +286,33 @@ const App = () => {
             {load ? "Hide" : "Show"}
             {"  Load Screen"}
           </button>
+
+          <button onClick={() => setEdit(edit ? false : true)}>
+            {" "}
+            {edit ? "Hide Edit Options" : "Edit Graph"}
+          </button>
         </form>
 
-        <EditGraph
-          {...{
-            tasksx,
-            arrows,
-            graph,
-            setGraph,
-            inputTask,
-            setInputTask,
-            inputArrow,
-            setInputArrow,
-            clear,
-            addTasks,
-            addLinks,
-            onSave,
-          }}
-        />
-
+        {edit ? (
+          <EditGraph
+            {...{
+              tasksx,
+              arrows,
+              graph,
+              setGraph,
+              inputTask,
+              setInputTask,
+              inputArrow,
+              setInputArrow,
+              clear,
+              addTasks,
+              addLinks,
+              onSave,
+            }}
+          />
+        ) : (
+          <></>
+        )}
         <Tree nodes={tasksx} links={arrows} image={image} />
         {load ? (
           <LoadScreen
