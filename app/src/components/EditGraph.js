@@ -84,7 +84,7 @@ const EditGraph = ({
           {tasksx
             .filter(
               (node) =>
-                node.name.toLowerCase() != inputTask.toLowerCase().trim() &&
+                node.name.toLowerCase() !== inputTask.toLowerCase().trim() &&
                 arrows
                   .map((e) => e.source)
                   .indexOf(inputTask.toLowerCase().trim()) === -1,

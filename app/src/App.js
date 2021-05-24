@@ -18,7 +18,7 @@ const App = () => {
       console.log("NASA API key being used");
     } catch (error) {
       console.warn("warning: DEMO_KEY being used");
-      const response = await fetch(
+      await fetch(
         "https://api.nasa.gov/planetary/apod?api_key=DEMO_KEY",
         // "https://api.nasa.gov/planetary/apod?api_key=" +
         //   process.env.REACT_APP_NASA_API_KEY,
@@ -94,7 +94,7 @@ const App = () => {
       tasksx
         .map((e) => e.name.toLowerCase())
         .indexOf(inputTask.toLowerCase().trim()) === -1 &&
-      inputTask != ""
+      inputTask !== ""
     ) {
       const newNode = {
         key: tasksx.length,
@@ -111,7 +111,7 @@ const App = () => {
       tasksx
         .map((e) => e.name.toLowerCase())
         .indexOf(inputTask.toLowerCase().trim()) === -1 &&
-      inputTask != ""
+      inputTask !== ""
     ) {
       const newNode = {
         key: tasksx.length,
@@ -128,7 +128,7 @@ const App = () => {
       tasksx
         .map((e) => e.name.toLowerCase())
         .indexOf(inputArrow.toLowerCase().trim()) === -1 &&
-      inputArrow != ""
+      inputArrow !== ""
     ) {
       const newNode = {
         key: tasksx.length,
@@ -216,16 +216,6 @@ const App = () => {
     }
   };
 
-  // loading graph nodes and links from db
-  const getGraphData = async () => {
-    try {
-      const graphData = await apiClient.getGraphs();
-      console.log(graphData);
-    } catch (error) {
-      console.error("failed to GET graphData");
-    }
-  };
-
   // show/hide load screen state hooks
   const [load, setLoad] = React.useState(false);
 
@@ -290,7 +280,8 @@ const App = () => {
           <button
             onClick={() => {
               clear();
-              setLoad(false), setEdit(true);
+              setLoad(false);
+              setEdit(true);
               setInfo(false);
               setOpacity(1);
             }}
