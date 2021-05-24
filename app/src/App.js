@@ -1,7 +1,6 @@
 import * as React from "react";
 
 import * as apiClient from "./apiClient";
-// import BarChart from "./components/BarChart";
 import EditGraph from "./components/EditGraph";
 import Information from "./components/Information";
 import LoadScreen from "./components/LoadScreen";
@@ -9,22 +8,9 @@ import Tree from "./components/Tree";
 import "./normalize.css";
 import "./App.css";
 
-// import dotenv from "dotenv";
-
-// console.log(process.env.REACT_APP_NASA_API_KEY);
-// console.log(process.env.NASA_API_KEY);
-
 const App = () => {
-  // const [tasks, setTasks] = React.useState([]);
-
-  // const loadTasks = async () => setTasks(await apiClient.getTasks());
-
-  // React.useEffect(() => {
-  //   loadTasks();
-  // }, []);
-
   const [image, setImage] = React.useState([""]);
-  // const loadImg = async () => setTasks(await apiClient.getTasks());
+
   const loadImage = async () => {
     try {
       setImage(await apiClient.getImage());
@@ -45,8 +31,6 @@ const App = () => {
           },
         },
       );
-      // const jsonData = await response.json();
-      // setImage(jsonData);
     }
   };
 
@@ -100,11 +84,9 @@ const App = () => {
     { source: 14, target: 13 },
   ];
 
-  // const [savedNodes, setSavedNodes] = React.useState(nodes);
   const [tasksx, setTasks] = React.useState([...nodes]);
   const [inputTask, setInputTask] = React.useState("");
   console.table(tasksx);
-  // console.table(savedNodes);
 
   const addTasks = () => {
     console.log("inside addTasks");
@@ -118,12 +100,8 @@ const App = () => {
         key: tasksx.length,
         name: inputTask.trim(),
       };
-      // nodes.push({ ...newNode });
-      // console.table(nodes);
-      // setSavedNodes([...savedNodes, { ...newNode }]);
       setTasks([...tasksx, newNode]);
     }
-    // setInputTask("");
   };
 
   const addLinks = () => {
@@ -167,42 +145,30 @@ const App = () => {
       setInputTask("");
       setInputArrow("");
       addArrow(target, source);
-      // console.log(links);
     }
   };
 
-  // const [savedLinks, setSavedLinks] = React.useState(links);
   const [arrows, setArrows] = React.useState([...links]);
   const [inputArrow, setInputArrow] = React.useState("");
   console.table(arrows);
-  // console.table(savedLinks);
 
   const addArrow = (thing, requirement) => {
     console.log("inside addArrow");
     const newLink = {
       source: requirement,
       target: thing,
-      // index: arrows.length,
     };
-    // links.push({ ...newLink });
-    // console.table(links);
-    // setSavedLinks([...savedLinks, { ...newLink }]);
+
     setArrows([...arrows, newLink]);
     setInputArrow("");
   };
 
   const clear = () => {
-    // nodes.length = 0;
-    // links.length = 0;
     setTasks([]);
-    // setSavedNodes([]);
     setInputArrow("");
     setInputTask("");
     setArrows([]);
     setGraph("");
-    // setSavedLinks([]);
-    // console.log({ savedNodes });
-    // console.log({ savedLinks });
   };
 
   // let node = tasksx.key;
@@ -228,8 +194,6 @@ const App = () => {
     let canAdd = saveData.nodes.length > 0 && graph.length > 0;
     if (canAdd) {
       await apiClient.addTask(saveData);
-      // loadTasks();
-      // setTask("");
     }
   };
 
@@ -239,7 +203,6 @@ const App = () => {
   const getGraphInfo = async () => {
     try {
       let list = await apiClient.getGraphs();
-      // setGraphInfo(await apiClient.getGraphs());
       setGraphInfo(list);
       console.log(graphInfo);
     } catch (error) {
@@ -360,7 +323,6 @@ const App = () => {
         <Tree nodes={tasksx} links={arrows} image={image} opacity={opacity} />
         {load ? (
           <LoadScreen
-            // graphName={graphName} userName={userName} timestamp={timestamp}
             setGraph={setGraph}
             setArrows={setArrows}
             setTasks={setTasks}
