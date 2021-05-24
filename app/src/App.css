@@ -78,10 +78,12 @@ footer {
   opacity: 0.9;
   text-align: right;
   transition: opacity 0.12s ease;
+  z-index: -1;
 }
 
 footer:hover {
   opacity: 0.96;
+  /* z-index: 1; */
 }
 
 a {
