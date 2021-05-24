@@ -7,4 +7,4 @@ do
   sleep 5
 done
 
-npx react-scripts start
+ESLINT_NO_DEV_ERRORS=false npx react-scripts start
