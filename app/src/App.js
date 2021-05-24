@@ -2,6 +2,7 @@ import * as React from "react";
 
 import * as apiClient from "./apiClient";
 // import BarChart from "./components/BarChart";
+import EditGraph from "./components/EditGraph";
 import LoadScreen from "./components/LoadScreen";
 import Tree from "./components/Tree";
 import "./normalize.css";
@@ -283,100 +284,24 @@ const App = () => {
             {"  Load Screen"}
           </button>
         </form>
-        <h2>Add Task</h2>
-        <form
-          data-testid="app-1"
-          onSubmit={(e) => {
-            e.preventDefault();
-            addTasks();
-          }}
-        >
-          <input
-            onChange={(e) => setInputTask(e.target.value)}
-            value={inputTask}
-            placeholder="add something new"
-          />
 
-          <button>add task</button>
-        </form>
-        <h2>Add Links</h2>
-        <form
-          onSubmit={(e) => {
-            e.preventDefault();
-            if (
-              (inputTask !== "" &&
-                inputArrow !== "" &&
-                inputTask.toLowerCase().trim() !==
-                  inputArrow.toLowerCase().trim() &&
-                tasksx.filter(
-                  (node) =>
-                    node.name.toLowerCase() === inputTask.toLowerCase().trim(),
-                )) ||
-              tasksx.filter(
-                (node) =>
-                  node.name.toLowerCase() === inputArrow.toLowerCase().trim(),
-              )
-            ) {
-              addLinks();
-            } else console.error("cannot make links");
+        <EditGraph
+          {...{
+            tasksx,
+            arrows,
+            graph,
+            setGraph,
+            inputTask,
+            setInputTask,
+            inputArrow,
+            setInputArrow,
+            clear,
+            addTasks,
+            addLinks,
+            onSave,
           }}
-        >
-          <input
-            list="nodelist"
-            type="search"
-            name="query"
-            aria-label="Search for all tasks"
-            autocomplete="off"
-            onChange={(e) => setInputTask(e.target.value)}
-            value={inputTask}
-            placeholder="pick a task"
-          />
-          requires
-          <input
-            list="linkable"
-            type="search"
-            name="query"
-            aria-label="Search for existing tasks to connect"
-            autocomplete="off"
-            onChange={(e) => setInputArrow(e.target.value)}
-            value={inputArrow}
-            placeholder="add requirement"
-          />
-          <datalist id="nodelist">
-            {tasksx.map((node) => (
-              <option value={node.name} key={node.key} />
-            ))}
-          </datalist>
-          <datalist id="linkable">
-            {tasksx
-              .filter(
-                (node) =>
-                  node.name.toLowerCase() != inputTask.toLowerCase().trim() &&
-                  arrows
-                    .map((e) => e.source)
-                    .indexOf(inputTask.toLowerCase().trim()) === -1,
-              )
-              .map((node) => (
-                <option value={node.name} key={node.key} />
-              ))}
-          </datalist>
-          <button>add link</button>
-        </form>
-        <h2>Options for {graph ? graph : "untitled goal"}</h2>
-        <form
-          onSubmit={(e) => {
-            e.preventDefault();
-          }}
-        >
-          <input
-            type="text"
-            value={graph}
-            onChange={(e) => setGraph(e.target.value)}
-            placeholder="name me to save me"
-          ></input>
-          <button onClick={() => onSave()}> save </button>
-          <button onClick={() => clear()}> new graph </button>
-        </form>
+        />
+
         <Tree nodes={tasksx} links={arrows} image={image} />
         {load ? (
           <LoadScreen
