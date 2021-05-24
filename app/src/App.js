@@ -302,7 +302,15 @@ const App = () => {
             {edit ? "Hide Edit Options" : "Edit Graph"}
           </button>
 
-          <button onClick={() => clear()}> New Graph </button>
+          <button
+            onClick={() => {
+              clear();
+              setLoad(false), setEdit(true);
+            }}
+          >
+            {" "}
+            New Graph{" "}
+          </button>
         </form>
 
         {edit ? (
