@@ -108,7 +108,14 @@ const EditGraph = ({
           onChange={(e) => setGraph(e.target.value)}
           placeholder="name me to save me"
         ></input>
-        <button onClick={() => onSave()}> save </button>
+        <button
+          onClick={() => onSave()}
+          disabled={graph.length > 0 ? null : "disabled"}
+          title={graph.length > 0 ? "must name the graph to save it" : null}
+        >
+          {" "}
+          save{" "}
+        </button>
       </form>
     </section>
   );
