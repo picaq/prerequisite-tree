@@ -268,6 +268,8 @@ const App = () => {
       </header>
 
       <main className="App">
+        <button onClick={() => getGraphInfo()}> Load Graphs </button>
+
         <h2>Add Task</h2>
         <form
           data-testid="app-1"
@@ -284,6 +286,7 @@ const App = () => {
 
           <button>add task</button>
         </form>
+
         <h2>Add Links</h2>
         <form
           onSubmit={(e) => {
@@ -360,7 +363,6 @@ const App = () => {
             placeholder="name me to save me"
           ></input>
           <button onClick={() => onSave()}> save </button>
-          <button onClick={() => getGraphInfo()}> load </button>
           <button onClick={() => clear()}> new graph </button>
         </form>
         <Tree nodes={tasksx} links={arrows} image={image} />
