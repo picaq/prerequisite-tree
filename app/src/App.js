@@ -261,6 +261,9 @@ const App = () => {
     }
   };
 
+  // show/hide load screen state hooks
+  const [load, setLoad] = React.useState(false);
+
   return (
     <>
       <header>
@@ -268,8 +271,18 @@ const App = () => {
       </header>
 
       <main className="App">
-        <button onClick={() => getGraphInfo()}> Load Graphs </button>
-
+        <form
+          onSubmit={(e) => {
+            e.preventDefault();
+            getGraphInfo();
+          }}
+        >
+          <button onClick={() => setLoad(load ? false : true)}>
+            {" "}
+            {load ? "Hide" : "Show"}
+            {"  Load Screen"}
+          </button>
+        </form>
         <h2>Add Task</h2>
         <form
           data-testid="app-1"
@@ -286,7 +299,6 @@ const App = () => {
 
           <button>add task</button>
         </form>
-
         <h2>Add Links</h2>
         <form
           onSubmit={(e) => {
@@ -366,15 +378,18 @@ const App = () => {
           <button onClick={() => clear()}> new graph </button>
         </form>
         <Tree nodes={tasksx} links={arrows} image={image} />
-
-        <LoadScreen
-          // graphName={graphName} userName={userName} timestamp={timestamp}
-          setGraph={setGraph}
-          setArrows={setArrows}
-          setTasks={setTasks}
-          clear={() => clear()}
-          graphInfo={graphInfo}
-        />
+        {load ? (
+          <LoadScreen
+            // graphName={graphName} userName={userName} timestamp={timestamp}
+            setGraph={setGraph}
+            setArrows={setArrows}
+            setTasks={setTasks}
+            clear={() => clear()}
+            graphInfo={graphInfo}
+          />
+        ) : (
+          <></>
+        )}
         <footer>
           <p>
             NASA image of the day:{" "}
