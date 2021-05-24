@@ -1,28 +1,16 @@
 import * as React from "react";
 
 import * as apiClient from "./apiClient";
-// import BarChart from "./components/BarChart";
+import EditGraph from "./components/EditGraph";
+import Information from "./components/Information";
 import LoadScreen from "./components/LoadScreen";
 import Tree from "./components/Tree";
 import "./normalize.css";
 import "./App.css";
 
-// import dotenv from "dotenv";
-
-// console.log(process.env.REACT_APP_NASA_API_KEY);
-// console.log(process.env.NASA_API_KEY);
-
 const App = () => {
-  // const [tasks, setTasks] = React.useState([]);
-
-  // const loadTasks = async () => setTasks(await apiClient.getTasks());
-
-  // React.useEffect(() => {
-  //   loadTasks();
-  // }, []);
-
   const [image, setImage] = React.useState([""]);
-  // const loadImg = async () => setTasks(await apiClient.getTasks());
+
   const loadImage = async () => {
     try {
       setImage(await apiClient.getImage());
@@ -30,7 +18,7 @@ const App = () => {
       console.log("NASA API key being used");
     } catch (error) {
       console.warn("warning: DEMO_KEY being used");
-      const response = await fetch(
+      await fetch(
         "https://api.nasa.gov/planetary/apod?api_key=DEMO_KEY",
         // "https://api.nasa.gov/planetary/apod?api_key=" +
         //   process.env.REACT_APP_NASA_API_KEY,
@@ -43,8 +31,6 @@ const App = () => {
           },
         },
       );
-      // const jsonData = await response.json();
-      // setImage(jsonData);
     }
   };
 
@@ -98,11 +84,9 @@ const App = () => {
     { source: 14, target: 13 },
   ];
 
-  // const [savedNodes, setSavedNodes] = React.useState(nodes);
   const [tasksx, setTasks] = React.useState([...nodes]);
   const [inputTask, setInputTask] = React.useState("");
   console.table(tasksx);
-  // console.table(savedNodes);
 
   const addTasks = () => {
     console.log("inside addTasks");
@@ -110,18 +94,14 @@ const App = () => {
       tasksx
         .map((e) => e.name.toLowerCase())
         .indexOf(inputTask.toLowerCase().trim()) === -1 &&
-      inputTask != ""
+      inputTask !== ""
     ) {
       const newNode = {
         key: tasksx.length,
         name: inputTask.trim(),
       };
-      // nodes.push({ ...newNode });
-      // console.table(nodes);
-      // setSavedNodes([...savedNodes, { ...newNode }]);
       setTasks([...tasksx, newNode]);
     }
-    // setInputTask("");
   };
 
   const addLinks = () => {
@@ -131,7 +111,7 @@ const App = () => {
       tasksx
         .map((e) => e.name.toLowerCase())
         .indexOf(inputTask.toLowerCase().trim()) === -1 &&
-      inputTask != ""
+      inputTask !== ""
     ) {
       const newNode = {
         key: tasksx.length,
@@ -148,7 +128,7 @@ const App = () => {
       tasksx
         .map((e) => e.name.toLowerCase())
         .indexOf(inputArrow.toLowerCase().trim()) === -1 &&
-      inputArrow != ""
+      inputArrow !== ""
     ) {
       const newNode = {
         key: tasksx.length,
@@ -165,42 +145,30 @@ const App = () => {
       setInputTask("");
       setInputArrow("");
       addArrow(target, source);
-      // console.log(links);
     }
   };
 
-  // const [savedLinks, setSavedLinks] = React.useState(links);
   const [arrows, setArrows] = React.useState([...links]);
   const [inputArrow, setInputArrow] = React.useState("");
   console.table(arrows);
-  // console.table(savedLinks);
 
   const addArrow = (thing, requirement) => {
     console.log("inside addArrow");
     const newLink = {
       source: requirement,
       target: thing,
-      // index: arrows.length,
     };
-    // links.push({ ...newLink });
-    // console.table(links);
-    // setSavedLinks([...savedLinks, { ...newLink }]);
+
     setArrows([...arrows, newLink]);
     setInputArrow("");
   };
 
   const clear = () => {
-    // nodes.length = 0;
-    // links.length = 0;
     setTasks([]);
-    // setSavedNodes([]);
     setInputArrow("");
     setInputTask("");
     setArrows([]);
     setGraph("");
-    // setSavedLinks([]);
-    // console.log({ savedNodes });
-    // console.log({ savedLinks });
   };
 
   // let node = tasksx.key;
@@ -226,8 +194,6 @@ const App = () => {
     let canAdd = saveData.nodes.length > 0 && graph.length > 0;
     if (canAdd) {
       await apiClient.addTask(saveData);
-      // loadTasks();
-      // setTask("");
     }
   };
 
@@ -237,7 +203,6 @@ const App = () => {
   const getGraphInfo = async () => {
     try {
       let list = await apiClient.getGraphs();
-      // setGraphInfo(await apiClient.getGraphs());
       setGraphInfo(list);
       console.log(graphInfo);
     } catch (error) {
@@ -251,131 +216,115 @@ const App = () => {
     }
   };
 
-  // loading graph nodes and links from db
-  const getGraphData = async () => {
-    try {
-      const graphData = await apiClient.getGraphs();
-      console.log(graphData);
-    } catch (error) {
-      console.error("failed to GET graphData");
-    }
-  };
+  // show/hide load screen state hooks
+  const [load, setLoad] = React.useState(false);
+
+  // show/hide edit graph state hooks
+  const [edit, setEdit] = React.useState(false);
+
+  // show/hide edit information state hooks
+  const [info, setInfo] = React.useState(false);
+
+  // opacity state hooks
+  const [opacity, setOpacity] = React.useState(1);
 
   return (
     <>
       <header>
         <h1>Prerequisite Tree</h1>
+        <button
+          className="info"
+          onClick={() => {
+            setInfo(true);
+            setLoad(false);
+            setEdit(false);
+            setOpacity(0.2);
+          }}
+        >
+          <em>?﻿</em>
+        </button>
       </header>
 
       <main className="App">
-        <h2>Add Task</h2>
         <form
-          data-testid="app-1"
           onSubmit={(e) => {
             e.preventDefault();
-            addTasks();
+            getGraphInfo();
           }}
         >
-          <input
-            onChange={(e) => setInputTask(e.target.value)}
-            value={inputTask}
-            placeholder="add something new"
-          />
+          <button
+            onClick={() => {
+              setLoad(load ? false : true);
+              setEdit(false);
+              setInfo(false);
+              setOpacity(1);
+            }}
+          >
+            {" "}
+            {load ? "Hide" : "Show"}
+            {"  Load Screen"}
+          </button>
 
-          <button>add task</button>
-        </form>
-        <h2>Add Links</h2>
-        <form
-          onSubmit={(e) => {
-            e.preventDefault();
-            if (
-              (inputTask !== "" &&
-                inputArrow !== "" &&
-                inputTask.toLowerCase().trim() !==
-                  inputArrow.toLowerCase().trim() &&
-                tasksx.filter(
-                  (node) =>
-                    node.name.toLowerCase() === inputTask.toLowerCase().trim(),
-                )) ||
-              tasksx.filter(
-                (node) =>
-                  node.name.toLowerCase() === inputArrow.toLowerCase().trim(),
-              )
-            ) {
-              addLinks();
-            } else console.error("cannot make links");
-          }}
-        >
-          <input
-            list="nodelist"
-            type="search"
-            name="query"
-            aria-label="Search for all tasks"
-            autocomplete="off"
-            onChange={(e) => setInputTask(e.target.value)}
-            value={inputTask}
-            placeholder="pick a task"
-          />
-          requires
-          <input
-            list="linkable"
-            type="search"
-            name="query"
-            aria-label="Search for existing tasks to connect"
-            autocomplete="off"
-            onChange={(e) => setInputArrow(e.target.value)}
-            value={inputArrow}
-            placeholder="add requirement"
-          />
-          <datalist id="nodelist">
-            {tasksx.map((node) => (
-              <option value={node.name} key={node.key} />
-            ))}
-          </datalist>
-          <datalist id="linkable">
-            {tasksx
-              .filter(
-                (node) =>
-                  node.name.toLowerCase() != inputTask.toLowerCase().trim() &&
-                  arrows
-                    .map((e) => e.source)
-                    .indexOf(inputTask.toLowerCase().trim()) === -1,
-              )
-              .map((node) => (
-                <option value={node.name} key={node.key} />
-              ))}
-          </datalist>
-          <button>add link</button>
-        </form>
-        <h2>Options for {graph ? graph : "untitled goal"}</h2>
-        <form
-          onSubmit={(e) => {
-            e.preventDefault();
-          }}
-        >
-          <input
-            type="text"
-            value={graph}
-            onChange={(e) => setGraph(e.target.value)}
-            placeholder="name me to save me"
-          ></input>
-          <button onClick={() => onSave()}> save </button>
-          <button onClick={() => getGraphInfo()}> load </button>
-          <button onClick={() => clear()}> new graph </button>
-        </form>
-        <Tree nodes={tasksx} links={arrows} image={image} />
+          <button
+            onClick={() => {
+              setEdit(edit ? false : true);
+              setLoad(false);
+              setInfo(false);
+              setOpacity(1);
+            }}
+          >
+            {" "}
+            {edit ? "Hide Edit Options" : "Edit Graph"}
+          </button>
 
-        <LoadScreen
-          // graphName={graphName} userName={userName} timestamp={timestamp}
-          setGraph={setGraph}
-          setArrows={setArrows}
-          setTasks={setTasks}
-          clear={() => clear()}
-          graphInfo={graphInfo}
-        />
+          <button
+            onClick={() => {
+              clear();
+              setLoad(false);
+              setEdit(true);
+              setInfo(false);
+              setOpacity(1);
+            }}
+          >
+            {" "}
+            New Graph{" "}
+          </button>
+        </form>
+
+        {edit ? (
+          <EditGraph
+            {...{
+              tasksx,
+              arrows,
+              graph,
+              setGraph,
+              inputTask,
+              setInputTask,
+              inputArrow,
+              setInputArrow,
+              addTasks,
+              addLinks,
+              onSave,
+            }}
+          />
+        ) : (
+          <></>
+        )}
+        <Tree nodes={tasksx} links={arrows} image={image} opacity={opacity} />
+        {load ? (
+          <LoadScreen
+            setGraph={setGraph}
+            setArrows={setArrows}
+            setTasks={setTasks}
+            clear={() => clear()}
+            graphInfo={graphInfo}
+          />
+        ) : (
+          <></>
+        )}
         <footer>
           <p>
-            NASA Image:{" "}
+            NASA image of the day:{" "}
             <em>
               <a
                 href="https://apod.nasa.gov/apod/astropix.html"
@@ -390,6 +339,7 @@ const App = () => {
           </p>
         </footer>
       </main>
+      {info ? <Information /> : <></>}
     </>
   );
 };

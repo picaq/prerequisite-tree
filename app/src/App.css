@@ -1,6 +1,7 @@
 :root {
   --hover-color: #a1d6f1;
   --body-text: "Open Sans", Helvetica, Arial, sans-serif;
+  --display-face: "Playfair Display", serif;
 }
 
 html {
@@ -20,13 +21,13 @@ h3,
 h4,
 h5 {
   color: #ccc;
-  font-family: "Playfair Display", serif;
+  font-family: var(--display-face);
 }
 
 input,
 button {
   color: #ddd;
-  background-color: #222;
+  background-color: #222b;
   /* background-color: cadetblue; */
 }
 
@@ -78,10 +79,12 @@ footer {
   opacity: 0.9;
   text-align: right;
   transition: opacity 0.12s ease;
+  z-index: -1;
 }
 
 footer:hover {
   opacity: 0.96;
+  /* z-index: 1; */
 }
 
 a {
@@ -110,4 +113,24 @@ button:hover {
 td:first-child {
   text-align: right;
   padding-right: 0.33em;
+}
+
+.info {
+  font-style: var(--display-face);
+  font-size: 2rem;
+  border-radius: 50%;
+  width: 2.75rem;
+  height: 2.75rem;
+  position: fixed;
+  right: 1rem;
+  top: 1.25rem;
+  letter-spacing: 0.07em;
+}
+
+aside {
+  max-width: 70em;
+}
+
+p {
+  line-height: 1.39em;
 }

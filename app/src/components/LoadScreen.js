@@ -5,23 +5,6 @@ import * as apiClient from "./../apiClient";
 // passing in
 
 const LoadScreen = ({ graphInfo, setGraph, setTasks, setArrows, clear }) => {
-  // const [graphInfo, setGraphInfo] = React.useState([]);
-
-  // const getGraphInfo = async () => {
-  //   try {
-  //     const response = async () => setGraphInfo(await apiClient.getGraphs());
-  //     const jsonData = await response.json();
-  //     setGraphInfo(jsonData);
-  //     console.log(jsonData);
-  //   } catch (error) {
-  //     console.error(error.message);
-  //   }
-  // };
-
-  // React.useEffect(() => {
-  //   getGraphInfo();
-  // }, []);
-
   const getGraphData = async (id) => {
     try {
       const graphData = await apiClient.getGraph(id);
