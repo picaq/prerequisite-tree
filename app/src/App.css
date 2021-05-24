@@ -128,9 +128,24 @@ td:first-child {
 }
 
 aside {
-  max-width: 70em;
+  max-width: 53em;
+  margin: 0 auto;
 }
 
 p {
   line-height: 1.39em;
+}
+
+.flex {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-content: space-between;
+  height: 100%;
+  position: relative;
+}
+
+.flex footer {
+  position: static;
+  margin: 0;
 }

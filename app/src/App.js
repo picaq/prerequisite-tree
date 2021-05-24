@@ -322,24 +322,29 @@ const App = () => {
         ) : (
           <></>
         )}
-        <footer>
-          <p>
-            NASA image of the day:{" "}
-            <em>
-              <a
-                href="https://apod.nasa.gov/apod/astropix.html"
-                target="_blank"
-                rel="noreferrer"
-              >
-                {image.title}
-              </a>
-            </em>
-            {" "}
-            for {new Date(image.date).toDateString()}
-          </p>
-        </footer>
+
+        {!load && !info ? (
+          <footer>
+            <p>
+              NASA image of the day:{" "}
+              <em>
+                <a
+                  href="https://apod.nasa.gov/apod/astropix.html"
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  {image.title}
+                </a>
+              </em>
+              {" "}
+              for {new Date(image.date).toDateString()}
+            </p>
+          </footer>
+        ) : (
+          <></>
+        )}
       </main>
-      {info ? <Information /> : <></>}
+      {info ? <Information {...{image}} /> : <></>}
     </>
   );
 };
