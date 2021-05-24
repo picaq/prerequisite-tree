@@ -13,7 +13,7 @@ const Information = ({ image }) => {
           <li>
             [Show Load Screen] loads a list of existing graphs for you to view.
           </li>
-          <li>[Edit Graoh] allows you to edit any existing graph.</li>
+          <li>[Edit Graph] allows you to edit any existing graph.</li>
           <li>[New Graph] creates a graph from scratch.</li>
         </p>
         <p>
