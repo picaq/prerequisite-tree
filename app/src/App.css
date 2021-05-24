@@ -126,3 +126,11 @@ td:first-child {
   top: 1.25rem;
   letter-spacing: 0.07em;
 }
+
+aside {
+  max-width: 70em;
+}
+
+p {
+  line-height: 1.39em;
+}
