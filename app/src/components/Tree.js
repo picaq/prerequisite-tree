@@ -5,7 +5,7 @@ import * as d3 from "d3";
 import { useD3 } from "../hooks/useD3";
 
 // passing in
-function Tree({ links, nodes, image }) {
+function Tree({ links, nodes, image, opacity }) {
   console.log(image.hdurl);
   // pink curlies = don’t worry about order of passing in
   const ref = useD3((svg) => {
@@ -116,9 +116,10 @@ function Tree({ links, nodes, image }) {
             <path d="M 0 0 L 10 5 L 0 10 z" fill="#777" />
           </marker>
         </defs>
-
-        <g className="links"></g>
-        <g className="nodes"></g>
+        <g style={{ opacity: opacity }}>
+          <g className="links"></g>
+          <g className="nodes"></g>
+        </g>
       </svg>
     </div>
   );

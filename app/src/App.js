@@ -272,6 +272,9 @@ const App = () => {
   // show/hide edit information state hooks
   const [info, setInfo] = React.useState(false);
 
+  // opacity state hooks
+  const [opacity, setOpacity] = React.useState(1);
+
   return (
     <>
       <header>
@@ -282,6 +285,7 @@ const App = () => {
             setInfo(true);
             setLoad(false);
             setEdit(false);
+            setOpacity(0.2);
           }}
         >
           <em>?﻿</em>
@@ -300,6 +304,7 @@ const App = () => {
               setLoad(load ? false : true);
               setEdit(false);
               setInfo(false);
+              setOpacity(1);
             }}
           >
             {" "}
@@ -312,6 +317,7 @@ const App = () => {
               setEdit(edit ? false : true);
               setLoad(false);
               setInfo(false);
+              setOpacity(1);
             }}
           >
             {" "}
@@ -322,6 +328,8 @@ const App = () => {
             onClick={() => {
               clear();
               setLoad(false), setEdit(true);
+              setInfo(false);
+              setOpacity(1);
             }}
           >
             {" "}
@@ -349,7 +357,7 @@ const App = () => {
         ) : (
           <></>
         )}
-        <Tree nodes={tasksx} links={arrows} image={image} />
+        <Tree nodes={tasksx} links={arrows} image={image} opacity={opacity} />
         {load ? (
           <LoadScreen
             // graphName={graphName} userName={userName} timestamp={timestamp}
