@@ -281,13 +281,23 @@ const App = () => {
             getGraphInfo();
           }}
         >
-          <button onClick={() => setLoad(load ? false : true)}>
+          <button
+            onClick={() => {
+              setLoad(load ? false : true);
+              setEdit(false);
+            }}
+          >
             {" "}
             {load ? "Hide" : "Show"}
             {"  Load Screen"}
           </button>
 
-          <button onClick={() => setEdit(edit ? false : true)}>
+          <button
+            onClick={() => {
+              setEdit(edit ? false : true);
+              setLoad(false);
+            }}
+          >
             {" "}
             {edit ? "Hide Edit Options" : "Edit Graph"}
           </button>
