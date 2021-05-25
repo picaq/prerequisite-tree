@@ -229,6 +229,9 @@ const App = () => {
   // opacity state hooks
   const [opacity, setOpacity] = React.useState(1);
 
+  // video playing state hooks
+  const [loop, setLoop] = React.useState(1);
+
   return (
     <>
       {image?.hdurl ? (
@@ -244,11 +247,13 @@ const App = () => {
             frameborder="0"
             height="100%"
             width="100%"
-            src={
-              image.url +
-              "&autoplay=1&showinfo=0&loop=1&mute=1&autohide=1&playbackrate=0.125&playlist=" +
+            src={`
+              ${
+                image.url
+              }&autoplay=${loop}&showinfo=0&loop=1&mute=1&autohide=1&playlist="${
               image.url.split(/[\/, ?]/)[image.url.split(/[\/, ?]/).length - 2]
             }
+            `}
           ></iframe>
         </div>
       ) : null}
@@ -358,6 +363,18 @@ const App = () => {
       </div>
       <footer>
         <p>
+          {" "}
+          {image.media_type === "video" ? (
+            <button
+              onClick={() => {
+                loop === 1 ? setLoop(0) : setLoop(1);
+              }}
+            >
+              {loop === 1 ? "⏸︎" : "⏵︎"}
+            </button>
+          ) : (
+            ""
+          )}
           NASA image of the day:{" "}
           <em>
             <a
