@@ -3,14 +3,34 @@
 Prerequisite Tree is an app to plan and visualize complex goals and tasks.
 Tasks that have multiple sub tasks or prerequisites can seem overwhelming and make people put off big projects. It is a tool to organize and visualize the needed steps can help chart what needs to be done and what can be done next.
 
-End-to-end React app backed by an Express API server, persisting data to
-PostgreSQL database. The project has a very simple interface that fetches data
-from a single table in the database, and allows you to add rows to that table.
+This is an end-to-end React app backed by an Express API server, persisting data to
+PostgreSQL database. The project fetches data
+from a single table in the database, and allows you to add rows to that table when a graph is saved.
 
 [See the app in action][live].
 
 [![Deploy to Heroku][deploy-badge]][deploy-workflow]
 [![Reset Heroku DB][reset-badge]][reset-workflow]
+
+## Interface
+There are three main option buttons: [Show Load Screen], [Edit Graph], and [New Graph]. The persistent (?) button in the top right corner provides introductory information about the app as well as explicit instructions on how to build a graph, save it, and load it with the interface buttons. All buttons visible here toggle a component to render or hide.
+[![Image from Gyazo](https://i.gyazo.com/1240cb08092bdff7302b9405d54a995c.gif)](https://gyazo.com/1240cb08092bdff7302b9405d54a995c)
+
+## Load Screen
+The default graph displayed is “Birthday Party”. The Load Screen loads a list of all saved graphs from the database. Clicking any button will load the graph into the client. If a graph is saved, it will show up on the Load Screen.
+
+## Edit Graph
+Editing an existing graph will display a form of options to allow linking existing tasks with an arrow with [Add Link] or adding new tasks with [Add Task] in order to link them to existing or new tasks.
+
+### New Graph
+The [New Graph] button opens the Edit Graph interface, only with a completely clear-ed out screen to start from scratch. A Task must be added before any linkages are made.
+
+### [NASA APOD API](https://github.com/nasa/apod-api)
+This app utilizes the NASA Astonomy Picture of the Day (APOD) API to load a new intriguing, inspiring imagery on a daily basis. Information about the imagery is persistently on the footer of the app alongside a [link to the site](https://apod.nasa.gov/apod/astropix.html) of the current image of the day. 
+
+Media types are typically photographs, but on rare occasion, a video is loaded. When a video is loaded, a pause/play button will appear in the footer. Media is loaded as a background element. 
+
+Info on [all NASA APIs](https://api.nasa.gov/), as well as how to use them, can be found here.
 
 ## Set-up Prerequisites
 
