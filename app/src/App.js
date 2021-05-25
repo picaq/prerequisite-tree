@@ -236,10 +236,15 @@ const App = () => {
           <button
             className="info"
             onClick={() => {
-              setInfo(true);
-              setLoad(false);
-              setEdit(false);
-              setOpacity(0.2);
+              if (info) {
+                setInfo(false);
+                setOpacity(1);
+              } else {
+                setInfo(true);
+                setLoad(false);
+                setEdit(false);
+                setOpacity(0.2);
+              }
             }}
           >
             <em>?﻿</em>
