@@ -268,6 +268,7 @@ const App = () => {
             }}
           >
             <button
+              style={{ marginRight: ".5rem", marginBottom: ".5rem" }}
               onClick={() => {
                 setLoad(load ? false : true);
                 setEdit(false);
@@ -281,6 +282,7 @@ const App = () => {
             </button>
 
             <button
+              style={{ marginRight: ".5rem" }}
               onClick={() => {
                 setEdit(edit ? false : true);
                 setLoad(false);

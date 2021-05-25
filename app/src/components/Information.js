@@ -10,11 +10,14 @@ const Information = () => {
           recipes, and the more complex are degree programs.
         </p>
         <p>
-          <li>
-            [Show Load Screen] loads a list of existing graphs for you to view.
-          </li>
-          <li>[Edit Graph] allows you to edit any existing graph.</li>
-          <li>[New Graph] creates a graph from scratch.</li>
+          <ul>
+            <li>
+              [Show Load Screen] loads a list of existing graphs for you to
+              view.
+            </li>
+            <li>[Edit Graph] allows you to edit any existing graph.</li>
+            <li>[New Graph] creates a graph from scratch.</li>
+          </ul>
         </p>
         <h3>How to Edit a Graph</h3>
         <p>

@@ -16,7 +16,8 @@ const EditGraph = ({
 }) => {
   return (
     <section>
-      <h2>Add Task</h2>
+      <h2>Edit Graph</h2>
+      <h3>Add Task</h3>
       <form
         data-testid="app-1"
         onSubmit={(e) => {
@@ -30,9 +31,9 @@ const EditGraph = ({
           placeholder="add something new"
         />
 
-        <button>add task</button>
+        <button>Add Task</button>
       </form>
-      <h2>Add Links</h2>
+      <h3>Add Links</h3>
       <form
         onSubmit={(e) => {
           e.preventDefault();
@@ -64,7 +65,9 @@ const EditGraph = ({
           value={inputTask}
           placeholder="pick a task"
         />
-        requires
+        <em style={{ paddingLeft: ".32em", paddingRight: ".41em" }}>
+          requires
+        </em>
         <input
           list="linkable"
           type="search"
@@ -93,9 +96,9 @@ const EditGraph = ({
               <option value={node.name} key={node.key} />
             ))}
         </datalist>
-        <button>add link</button>
+        <button>Add Link</button>
       </form>
-      <h2>Name to save {graph ? graph : "New Graph"}</h2>
+      <h3>Name to save {graph ? graph : "New Graph"}</h3>
       <form
         onSubmit={(e) => {
           e.preventDefault();
@@ -113,7 +116,7 @@ const EditGraph = ({
           // title={graph.length > 0 ? "must name the graph to save it" : null}
         >
           {" "}
-          save{" "}
+          Save{" "}
         </button>
       </form>
     </section>
