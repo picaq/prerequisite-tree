@@ -17,7 +17,7 @@ There are three main option buttons: [Show Load Screen], [Edit Graph], and [New 
 [![Image from Gyazo](https://i.gyazo.com/1240cb08092bdff7302b9405d54a995c.gif)](https://gyazo.com/1240cb08092bdff7302b9405d54a995c)
 
 ## Load Screen
-The default graph displayed is “Birthday Party”. The Load Screen loads a list of all saved graphs from the database. Clicking any button will load the graph into the client. If a graph is saved, it will show up on the Load Screen.
+The default graph displayed is “Birthday Party”. The Load Screen loads a list of all saved graphs from the database. Clicking any button will load the graph data into the client, and d3 will generate an SVG force-directed graph out of this data. If a graph is saved, it will show up on the Load Screen.
 
 ## Edit Graph
 Editing an existing graph will display a form of options to allow linking existing tasks with an arrow with [Add Link] or adding new tasks with [Add Task] in order to link them to existing or new tasks.
@@ -58,7 +58,7 @@ You'll need to install Node v14 or above. [`nvm`][nvm] is highly recommended.
 npm install
 ```
 
-### Install d3.js
+### Install d3.js in the app directory
 
 ```sh
 npm install d3 --save
@@ -85,7 +85,7 @@ information][dh-postgres].
 
 Let's set up the database server, create the application database, and seed it
 with some data. You only need to do this the first time you set up your
-development environment.
+development environment. The database will contain no rows, but you can save Birthday Party as your first entry!
 
 ```sh
 npm run db:init
