@@ -194,6 +194,7 @@ const App = () => {
     let canAdd = saveData.nodes.length > 0 && graph.length > 0;
     if (canAdd) {
       await apiClient.addTask(saveData);
+      setEdit(false);
     }
   };
 
