@@ -230,121 +230,120 @@ const App = () => {
 
   return (
     <>
-      <header>
-        <h1>Prerequisite Tree</h1>
-        <button
-          className="info"
-          onClick={() => {
-            setInfo(true);
-            setLoad(false);
-            setEdit(false);
-            setOpacity(0.2);
-          }}
-        >
-          <em>?﻿</em>
-        </button>
-      </header>
-
-      <main className="App">
-        <form
-          onSubmit={(e) => {
-            e.preventDefault();
-            getGraphInfo();
-          }}
-        >
+      <div className="content">
+        <header>
+          <h1>Prerequisite Tree</h1>
           <button
+            className="info"
             onClick={() => {
-              setLoad(load ? false : true);
+              setInfo(true);
+              setLoad(false);
               setEdit(false);
-              setInfo(false);
-              setOpacity(1);
+              setOpacity(0.2);
             }}
           >
-            {" "}
-            {load ? "Hide" : "Show"}
-            {"  Load Screen"}
+            <em>?﻿</em>
           </button>
+        </header>
 
-          <button
-            onClick={() => {
-              setEdit(edit ? false : true);
-              setLoad(false);
-              setInfo(false);
-              setOpacity(1);
+        <main className="App">
+          <form
+            onSubmit={(e) => {
+              e.preventDefault();
+              getGraphInfo();
             }}
           >
-            {" "}
-            {edit ? "Hide Edit Options" : "Edit Graph"}
-          </button>
+            <button
+              onClick={() => {
+                setLoad(load ? false : true);
+                setEdit(false);
+                setInfo(false);
+                setOpacity(1);
+              }}
+            >
+              {" "}
+              {load ? "Hide" : "Show"}
+              {"  Load Screen"}
+            </button>
 
-          <button
-            onClick={() => {
-              clear();
-              setLoad(false);
-              setEdit(true);
-              setInfo(false);
-              setOpacity(1);
-            }}
-          >
-            {" "}
-            New Graph{" "}
-          </button>
-        </form>
+            <button
+              onClick={() => {
+                setEdit(edit ? false : true);
+                setLoad(false);
+                setInfo(false);
+                setOpacity(1);
+              }}
+            >
+              {" "}
+              {edit ? "Hide Edit Options" : "Edit Graph"}
+            </button>
 
-        {edit ? (
-          <EditGraph
-            {...{
-              tasksx,
-              arrows,
-              graph,
-              setGraph,
-              inputTask,
-              setInputTask,
-              inputArrow,
-              setInputArrow,
-              addTasks,
-              addLinks,
-              onSave,
-            }}
-          />
-        ) : (
-          <></>
-        )}
-        <Tree nodes={tasksx} links={arrows} image={image} opacity={opacity} />
-        {load ? (
-          <LoadScreen
-            setGraph={setGraph}
-            setArrows={setArrows}
-            setTasks={setTasks}
-            clear={() => clear()}
-            graphInfo={graphInfo}
-          />
-        ) : (
-          <></>
-        )}
+            <button
+              onClick={() => {
+                clear();
+                setLoad(false);
+                setEdit(true);
+                setInfo(false);
+                setOpacity(1);
+              }}
+            >
+              {" "}
+              New Graph{" "}
+            </button>
+          </form>
 
-        {!load && !info ? (
-          <footer>
-            <p>
-              NASA image of the day:{" "}
-              <em>
-                <a
-                  href="https://apod.nasa.gov/apod/astropix.html"
-                  target="_blank"
-                  rel="noreferrer"
-                >
-                  {image.title}
-                </a>
-              </em>
-              {" "}
-              for {new Date(image.date).toDateString()}
-            </p>
-          </footer>
-        ) : (
-          <></>
-        )}
-      </main>
-      {info ? <Information {...{image}} /> : <></>}
+          {edit ? (
+            <EditGraph
+              {...{
+                tasksx,
+                arrows,
+                graph,
+                setGraph,
+                inputTask,
+                setInputTask,
+                inputArrow,
+                setInputArrow,
+                addTasks,
+                addLinks,
+                onSave,
+              }}
+            />
+          ) : (
+            <></>
+          )}
+          <Tree nodes={tasksx} links={arrows} image={image} opacity={opacity} />
+          {load ? (
+            <LoadScreen
+              setGraph={setGraph}
+              setArrows={setArrows}
+              setTasks={setTasks}
+              clear={() => clear()}
+              graphInfo={graphInfo}
+            />
+          ) : (
+            <></>
+          )}
+
+          {info ? <Information /> : <></>}
+        </main>
+      </div>
+
+      <footer>
+        <p>
+          NASA image of the day:{" "}
+          <em>
+            <a
+              href="https://apod.nasa.gov/apod/astropix.html"
+              target="_blank"
+              rel="noreferrer"
+            >
+              {image.title}
+            </a>
+          </em>
+          {" "}
+          for {new Date(image.date).toDateString()}
+        </p>
+      </footer>
     </>
   );
 };
