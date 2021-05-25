@@ -40,7 +40,7 @@ const Information = () => {
             </li>
             <li>
               After saving you should be able to see your graph by pressing
-              [Show Load Screen]
+              [Show Load Screen].
             </li>
           </ol>
         </p>
