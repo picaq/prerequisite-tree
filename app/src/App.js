@@ -231,6 +231,15 @@ const App = () => {
 
   return (
     <>
+      {image?.hdurl ? (
+        <div
+          className="bgImg"
+          style={{
+            backgroundImage: `url(${image.hdurl})`,
+          }}
+        />
+      ) : null}
+
       <div className="content">
         <header>
           <h1>Prerequisite Tree</h1>

@@ -83,7 +83,7 @@ function Tree({ links, nodes, image, opacity }) {
         // style={{width: "100%", height: "100%"}}
         style={{ overflow: "visible" }}
       >
-        {image?.hdurl ? (
+        {/* {image?.hdurl ? (
           <image
             style={{
               backgroundImage: `url(${image.hdurl})`,
@@ -95,13 +95,14 @@ function Tree({ links, nodes, image, opacity }) {
               transform: `translateY(calc(-97vh + 97vmin)) translateX(calc(-55vw + 55vmin))`,
               position: "absolute",
               top: 0,
+              // objectFit: "cover",
             }}
             // width={window.innerWidth}
             // width="100%"
             // height={window.innerHeight}
             href={image.hdurl}
           ></image>
-        ) : null}
+        ) : null} */}
         <defs>
           <marker
             id="triangle"

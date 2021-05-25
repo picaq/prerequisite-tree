@@ -14,7 +14,7 @@ html {
   text-shadow: 0.1rem 0.1rem 0.1rem var(--background-color-transp);
 }
 
-body {
+.content {
   padding: 0 1rem;
 }
 
@@ -147,4 +147,16 @@ body,
 }
 .footer {
   flex-shrink: 0;
+}
+
+.bgImg {
+  background-size: cover;
+  opacity: 0.32;
+  overflow: visible;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: -1;
 }
