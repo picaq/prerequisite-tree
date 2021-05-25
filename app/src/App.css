@@ -145,8 +145,9 @@ body,
 .content {
   flex: 1 0 auto;
 }
-.footer {
+footer {
   flex-shrink: 0;
+  margin: 0 1rem;
 }
 
 .bgImg {

@@ -239,7 +239,6 @@ const App = () => {
           }}
         />
       ) : null}
-
       <div className="content">
         <header>
           <h1>Prerequisite Tree</h1>
@@ -342,7 +341,6 @@ const App = () => {
           {info ? <Information /> : <></>}
         </main>
       </div>
-
       <footer>
         <p>
           NASA image of the day:{" "}
