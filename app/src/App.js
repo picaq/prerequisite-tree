@@ -230,7 +230,7 @@ const App = () => {
   const [opacity, setOpacity] = React.useState(1);
 
   // video playing state hooks
-  const [loop, setLoop] = React.useState(1);
+  const [loop, setLoop] = React.useState("1");
 
   return (
     <>
@@ -367,15 +367,15 @@ const App = () => {
           {image.media_type === "video" ? (
             <button
               onClick={() => {
-                loop === 1 ? setLoop(0) : setLoop(1);
+                loop === "1" ? setLoop("0") : setLoop("1");
               }}
             >
-              {loop === 1 ? "⏸︎" : "⏵︎"}
+              {loop === "1" ? "⏸︎" : "⏵︎"}
             </button>
           ) : (
             ""
           )}
-          NASA image of the day:{" "}
+          NASA {image.media_type === "video" ? "video" : "image"} of the day:{" "}
           <em>
             <a
               href="https://apod.nasa.gov/apod/astropix.html"
