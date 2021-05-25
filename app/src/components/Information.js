@@ -16,8 +16,8 @@ const Information = () => {
           <li>[Edit Graph] allows you to edit any existing graph.</li>
           <li>[New Graph] creates a graph from scratch.</li>
         </p>
+        <h3>How to Edit a Graph</h3>
         <p>
-          How to Edit a Graph
           <ol>
             <li>
               Add a Task. Name it anything. Press enter, return, or click [Add
@@ -44,8 +44,8 @@ const Information = () => {
             </li>
           </ol>
         </p>
+        <h3>Additional Info</h3>
         <p>
-          Additional Info
           <ul>
             <li>
               If you keep adding tasks without creating linkages, they will

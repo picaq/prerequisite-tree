@@ -2,13 +2,16 @@
   --hover-color: #a1d6f1;
   --body-text: "Open Sans", Helvetica, Arial, sans-serif;
   --display-face: "Playfair Display", serif;
+  --background-color: #131313;
+  --background-color-transp: #131313dd;
 }
 
 html {
   /* background: #171717; */
-  background: #131313;
+  background: var(--background-color);
   color: #ddd;
   font-family: var(--body-text);
+  text-shadow: 0.1rem 0.1rem 0.1rem var(--background-color-transp);
 }
 
 body {
