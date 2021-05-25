@@ -238,6 +238,19 @@ const App = () => {
             backgroundImage: `url(${image.hdurl})`,
           }}
         />
+      ) : image?.media_type === "video" ? (
+        <div className="bgImg">
+          <iframe
+            frameborder="0"
+            height="100%"
+            width="100%"
+            src={
+              image.url +
+              "&autoplay=1&showinfo=0&loop=1&mute=1&autohide=1&playbackrate=0.125&playlist=" +
+              image.url.split(/[\/, ?]/)[image.url.split(/[\/, ?]/).length - 2]
+            }
+          ></iframe>
+        </div>
       ) : null}
       <div className="content">
         <header>
