@@ -56,7 +56,10 @@ const Information = () => {
               when creating a linkage to bring them back.
             </li>
             <li>
-              You cannot create dupicate tasks. The fields are case insensitive.
+              You cannot create duplicate tasks. The fields are case insensitive.
+            </li>
+            <li>
+              Have fun!
             </li>
           </ul>
         </p>
