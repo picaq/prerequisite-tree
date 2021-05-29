@@ -4,7 +4,7 @@ import pgp from "pg-promise";
 const db = initDb();
 
 export const getGraphs = async () =>
-  await db.any("SELECT id, graph FROM tasks");
+  await db.any("SELECT id, graph FROM tasks ORDER BY id");
 
 export const getGraph = async (id) =>
   await db.any("SELECT graph, nodes, links FROM tasks WHERE id=$1", [id]);
