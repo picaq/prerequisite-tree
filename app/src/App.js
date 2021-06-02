@@ -345,7 +345,7 @@ const App = () => {
           ) : (
             <></>
           )}
-          <Tree nodes={tasksx} links={arrows} image={image} opacity={opacity} />
+          <Tree nodes={tasksx} links={arrows} image={image} opacity={opacity} data-testid="tree-0" />
           {load ? (
             <LoadScreen
               setGraph={setGraph}

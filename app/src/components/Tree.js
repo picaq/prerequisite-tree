@@ -6,7 +6,7 @@ import { useD3 } from "../hooks/useD3";
 
 // passing in
 function Tree({ links, nodes, image, opacity }) {
-  console.log(image.hdurl);
+  // console.log(image.hdurl);
   // pink curlies = don’t worry about order of passing in
   const ref = useD3((svg) => {
     // const height = 500;
