@@ -261,6 +261,7 @@ const App = () => {
         <header>
           <h1>Prerequisite Tree</h1>
           <button
+            data-testid="button-4"
             className="info"
             onClick={() => {
               if (info) {
@@ -286,6 +287,7 @@ const App = () => {
             }}
           >
             <button
+              data-testid="button-1"
               style={{ marginRight: ".5rem", marginBottom: ".5rem" }}
               onClick={() => {
                 setLoad(load ? false : true);
@@ -300,6 +302,7 @@ const App = () => {
             </button>
 
             <button
+              data-testid="button-2"
               style={{ marginRight: ".5rem" }}
               onClick={() => {
                 setEdit(edit ? false : true);
@@ -313,6 +316,7 @@ const App = () => {
             </button>
 
             <button
+              data-testid="button-3"
               onClick={() => {
                 clear();
                 setLoad(false);
@@ -345,7 +349,13 @@ const App = () => {
           ) : (
             <></>
           )}
-          <Tree nodes={tasksx} links={arrows} image={image} opacity={opacity} data-testid="tree-0" />
+          <Tree
+            nodes={tasksx}
+            links={arrows}
+            image={image}
+            opacity={opacity}
+            data-testid="tree-0"
+          />
           {load ? (
             <LoadScreen
               setGraph={setGraph}

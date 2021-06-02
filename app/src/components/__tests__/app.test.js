@@ -31,8 +31,32 @@ test("should render svg", () => {
 // fails to render by component id?
 test("should render Tree", () => {
   render(<App />);
-  render(<Tree />);
+  // render(<Tree />);
   // const tree = screen.getByTestId("tree-0");
   const tree = screen.getTestByComponent(<Tree />);
   expect(tree).toBeInTheDocument();
+});
+
+test("should render Load Screen button", () => {
+  render(<App />);
+  const button = screen.getByTestId("button-1");
+  expect(button).toBeInTheDocument();
+});
+
+test("should render Edit Graph button", () => {
+  render(<App />);
+  const button = screen.getByTestId("button-2");
+  expect(button).toBeInTheDocument();
+});
+
+test("should render New Graph button", () => {
+  render(<App />);
+  const button = screen.getByTestId("button-3");
+  expect(button).toBeInTheDocument();
+});
+
+test("should render Info button", () => {
+  render(<App />);
+  const button = screen.getByTestId("button-4");
+  expect(button).toBeInTheDocument();
 });
