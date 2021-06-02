@@ -72,7 +72,11 @@ function Tree({ links, nodes, image, opacity }) {
   });
 
   return (
-    <div className="svg-container" style={{ overflow: "visible" }}>
+    <div
+      className="svg-container"
+      style={{ overflow: "visible" }}
+      data-testid="tree-0"
+    >
       <svg
         data-testid="tree-1"
         version="1.1"

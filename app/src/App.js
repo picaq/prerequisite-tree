@@ -309,6 +309,9 @@ const App = () => {
                 setLoad(false);
                 setInfo(false);
                 setOpacity(1);
+                {
+                  handleClick ? handleClick() : "";
+                }
               }}
             >
               {" "}
@@ -349,13 +352,7 @@ const App = () => {
           ) : (
             <></>
           )}
-          <Tree
-            nodes={tasksx}
-            links={arrows}
-            image={image}
-            opacity={opacity}
-            data-testid="tree-0"
-          />
+          <Tree nodes={tasksx} links={arrows} image={image} opacity={opacity} />
           {load ? (
             <LoadScreen
               setGraph={setGraph}
