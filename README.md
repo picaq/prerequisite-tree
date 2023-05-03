@@ -7,7 +7,7 @@ This is an end-to-end React app backed by an Express API server, persisting data
 PostgreSQL database. The project fetches data
 from a single table in the database, and allows you to add rows to that table when a graph is saved.
 
-[See the app in action][live].
+~~[See the app in action][live].~~ [no longer hosted by heroku]
 
 [![Deploy to Heroku][deploy-badge]][deploy-workflow]
 [![Reset Heroku DB][reset-badge]][reset-workflow]
